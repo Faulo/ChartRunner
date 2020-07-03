@@ -10,16 +10,18 @@ public class Statistics : MonoBehaviour {
     [Multiline(20)]
     public string statusText;
 
-    IDictionary<IntStatistic, int> intStatistics = new Dictionary<IntStatistic, int>();
+    //IDictionary<IntStatistic, int> intStatistics = new Dictionary<IntStatistic, int>();
     IDictionary<FloatStatistic, float> floatStatistics = new Dictionary<FloatStatistic, float>();
     IDictionary<DictionaryStatistic, IDictionary<string, float>> dictionaryStatistics = new Dictionary<DictionaryStatistic, IDictionary<string, float>>();
     IDictionary<Vector2Statistic, IList<Vector2>> vector2Statistics = new Dictionary<Vector2Statistic, IList<Vector2>>();
 
     void Awake() {
         instance = this;
+        /*
         foreach (IntStatistic key in Enum.GetValues(typeof(IntStatistic))) {
             intStatistics[key] = 0;
         }
+        //*/
         foreach (FloatStatistic key in Enum.GetValues(typeof(FloatStatistic))) {
             floatStatistics[key] = 0;
         }
@@ -34,11 +36,13 @@ public class Statistics : MonoBehaviour {
     void Update() {
         var builder = new StringBuilder();
 
+        /*
         builder.AppendLine(nameof(intStatistics));
         foreach (var pair in intStatistics) {
             builder.AppendLine($"{pair.Key}: {pair.Value}");
         }
         builder.AppendLine();
+        //*/
 
         builder.AppendLine(nameof(floatStatistics));
         foreach (var pair in floatStatistics) {
@@ -61,7 +65,8 @@ public class Statistics : MonoBehaviour {
         statusText = builder.ToString();
     }
 
-    //FloatPair are singular integer values
+    /*
+    //IntPair are singular integer values
     public void Add(IntStatistic id, int value) {
         intStatistics[id] += value;
     }
@@ -71,6 +76,7 @@ public class Statistics : MonoBehaviour {
     public int Get(IntStatistic id) {
         return intStatistics[id];
     }
+    //*/
 
     //FloatPair are singular floating-point values
     public void Add(FloatStatistic id, float value) {
@@ -107,6 +113,9 @@ public class Statistics : MonoBehaviour {
     //Vector2Pairs are lists of Vector2 values
     public void Add(Vector2Statistic id, Vector2 value) {
         vector2Statistics[id].Add(value);
+    }
+    public void Add(Vector2Statistic id, float value) {
+        vector2Statistics[id].Add(new Vector2(floatStatistics[FloatStatistic.TimePassed], value));
     }
     public void Remove(Vector2Statistic id, Vector2 value) {
         for (int i = vector2Statistics[id].Count - 1; i >= 0; i--) {
