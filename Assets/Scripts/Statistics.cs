@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using UnityEngine;
 
@@ -52,13 +53,14 @@ public class Statistics : MonoBehaviour {
 
         builder.AppendLine(nameof(dictionaryStatistics));
         foreach (var pair in dictionaryStatistics) {
-            builder.AppendLine($"{pair.Key}: {pair.Value}");
+            builder.Append($"{pair.Key}: ");
+            builder.AppendLine(string.Join(" | ", pair.Value.Select(p => $"{p.Key}: {p.Value}")));
         }
         builder.AppendLine();
 
         builder.AppendLine(nameof(vector2Statistics));
         foreach (var pair in vector2Statistics) {
-            builder.AppendLine($"{pair.Key}: {string.Join(", ", pair.Value)}");
+            builder.AppendLine($"{pair.Key}: {pair.Value.DefaultIfEmpty(Vector2.zero).Last()}");
         }
         builder.AppendLine();
 
@@ -113,9 +115,6 @@ public class Statistics : MonoBehaviour {
     //Vector2Pairs are lists of Vector2 values
     public void Add(Vector2Statistic id, Vector2 value) {
         vector2Statistics[id].Add(value);
-    }
-    public void Add(Vector2Statistic id, float value) {
-        vector2Statistics[id].Add(new Vector2(floatStatistics[FloatStatistic.TimePassed], value));
     }
     public void Remove(Vector2Statistic id, Vector2 value) {
         for (int i = vector2Statistics[id].Count - 1; i >= 0; i--) {

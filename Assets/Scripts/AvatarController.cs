@@ -94,7 +94,7 @@ public class AvatarController : MonoBehaviour {
                     newState = AvatarState.Jumping;
                     velocity.y = Mathf.Max(velocity.y, jumpStartSpeed);
 
-                    Statistics.instance.Add(FloatStatistic.Jumps, 1);
+                    commands.Add(new FloatStatisticCommand(FloatStatistic.Jumps, 1));
                 }
             }
 
@@ -105,9 +105,8 @@ public class AvatarController : MonoBehaviour {
             snapshot.acceleration = acceleration;
             snapshot.velocity = velocity;
 
-            Statistics.instance.Add(FloatStatistic.TimePassed, Time.deltaTime);
-            Statistics.instance.Add(Vector2Statistic.VelocityOverTime, velocity.magnitude);
-
+            commands.Add(new FloatStatisticCommand(FloatStatistic.TimePassed, Time.deltaTime));
+            commands.Add(new Vector2StatisticCommand(Vector2Statistic.VelocityOverTime, velocity.magnitude));
             commands.Add(new AvatarCommand(oldSnapshot, snapshot, ApplySnapshot));
 
             Rewind.instance.Do(commands);
