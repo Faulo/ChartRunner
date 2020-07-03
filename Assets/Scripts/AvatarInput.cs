@@ -21,6 +21,9 @@ public class AvatarInput : MonoBehaviour, Controls.IPlayerActions {
             avatar.intendsJumpStart = false;
         }
     }
+    public void OnRewind(InputAction.CallbackContext context) {
+        avatar.intendsRewind = context.performed;
+    }
 
     void Awake() {
         controls = new Controls();
