@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
 
@@ -44,9 +45,14 @@ public class AvatarController : MonoBehaviour {
                 intendsJumpStart = false;
                 isJumping = true;
                 velocity.y = Mathf.Max(velocity.y, jumpStartSpeed);
+
+                Statistics.instance.Add(IntStatistic.Jumps, 1);
             }
         }
         attachedRigidbody.velocity = velocity;
+
+        Statistics.instance.Add(Vector2Statistic.VelocityOverTime, velocity);
+        Statistics.instance.Add(FloatStatistic.TimePassed, Time.deltaTime);
     }
 
     void OnValidate() {
