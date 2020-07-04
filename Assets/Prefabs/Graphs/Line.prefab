@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1563768436765104949}
   - component: {fileID: 1563768436765104948}
   - component: {fileID: 1563768436765104947}
+  - component: {fileID: 195110219507037591}
   m_Layer: 0
   m_Name: Line
   m_TagString: Untagged
@@ -66,7 +67,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 323772e5a17191b418ef39485bd636ac, type: 2}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,8 +109,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 1, g: 0, b: 0, a: 1}
+      key1: {r: 0.25301978, g: 0.023584902, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -143,3 +144,16 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &195110219507037591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563768436765104946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3cf8798bfd55624d84373e97b5d4491, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 3

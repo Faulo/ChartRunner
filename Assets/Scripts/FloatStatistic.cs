@@ -1,4 +1,7 @@
 ﻿public enum FloatStatistic {
     Jumps,
-    TimePassed
+    TimePassed,
+    CurrentX,
+    CurrentY,
+    CurrentSpeed
 }
