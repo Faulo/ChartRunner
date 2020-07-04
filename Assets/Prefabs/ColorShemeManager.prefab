@@ -45,3 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colorSchemes:
   - {fileID: 11400000, guid: 6cbb69e558198f04d869dfd6e335a48c, type: 2}
+  - {fileID: 11400000, guid: 13631f4acc8463f43b9547512e61a722, type: 2}
+  currentScheme: {fileID: 0}

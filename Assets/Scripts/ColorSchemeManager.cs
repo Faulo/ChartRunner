@@ -6,9 +6,19 @@ public class ColorSchemeManager : MonoBehaviour
 {
     public ColorSchemes[] colorSchemes = default;
 
-    public void Start() {
-        int n = Random.Range(0, colorSchemes.Length - 1);
+    public ColorSchemes currentScheme = default;
 
-        colorSchemes[n].ApplyColorScheme();
+    public static ColorSchemeManager instance = default;
+
+    public void Awake() {
+        instance = this;
+
+        int n = Random.Range(0, colorSchemes.Length);
+        currentScheme = colorSchemes[n];
     }
+
+    public void GetColor() {
+        currentScheme.ApplyColorScheme();
+    }
+
 }

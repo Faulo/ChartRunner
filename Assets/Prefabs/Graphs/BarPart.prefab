@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8793713769915091402}
   - component: {fileID: 7491037499507301545}
+  - component: {fileID: 894251384922898291}
   m_Layer: 0
   m_Name: BarPartSprite
   m_TagString: Untagged
@@ -81,6 +82,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &894251384922898291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817566459009203739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3cf8798bfd55624d84373e97b5d4491, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 3
 --- !u!1 &5441161449645551551
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,6 +155,7 @@ Transform:
   m_Children:
   - {fileID: 8793713769915091402}
   - {fileID: 1126624363655971001}
+  - {fileID: 9102920446457906996}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -158,3 +173,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatStatistic: 0
   topPivot: {fileID: 1126624363655971001}
+  midPivot: {fileID: 9102920446457906996}
+  offset: {x: 3, y: 0, z: 0}
+  textPrefab: {fileID: 4071923871688218008, guid: a208f5707b15e4d4b93b5e3895adf052,
+    type: 3}
+--- !u!1 &7824518305297935102
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9102920446457906996}
+  m_Layer: 0
+  m_Name: MidPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9102920446457906996
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7824518305297935102}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.256, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7727093815089074584}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

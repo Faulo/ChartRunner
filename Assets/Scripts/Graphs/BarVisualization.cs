@@ -21,7 +21,7 @@ public class BarVisualization : MonoBehaviour
         value = Statistics.instance.Get(statistic);
 
         // magic number 0.256 pro 0.1 Verschiebung nach oben
-        this.transform.localScale = new Vector3(0.1f, value / 10f, 0.1f);
+        this.transform.localScale = new Vector3(1f, value, 1f);
 
         
         this.transform.position = new Vector3(this.transform.position.x, yPos, 0);

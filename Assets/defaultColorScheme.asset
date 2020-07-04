@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: defaultColorScheme
   m_EditorClassIdentifier: Assembly-CSharp::ColorSchemes
-  mainColor: {fileID: 2100000, guid: 323772e5a17191b418ef39485bd636ac, type: 2}
-  backgroundColor: {fileID: 2100000, guid: 5fc734b4542106447b4c03d8437331a5, type: 2}
-  foregroundColor: {fileID: 2100000, guid: bad94e479f624654ba90f0a43f91bee7, type: 2}
-  highlightColor: {fileID: 2100000, guid: 02942124a0ee77947aabd905d79c297e, type: 2}
+  mainColor: {r: 1, g: 1, b: 1, a: 1}
+  backgroundColor: {r: 1, g: 0.99481165, b: 0.7971698, a: 1}
+  foregroundColor: {r: 0.27196658, g: 0.21124065, b: 0.4433962, a: 1}
+  highlightColor: {r: 0.4481132, g: 0.6552326, b: 1, a: 1}
+  negativeHighlightColor: {r: 1, g: 0, b: 0, a: 1}
+  positiveHighlightColor: {r: 0, g: 1, b: 0.004898548, a: 1}
