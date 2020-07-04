@@ -34,6 +34,7 @@ public class AvatarController : MonoBehaviour {
     float isRunningThreshold = 1;
 
     float acceleration = 0;
+    public float facing { get; private set; } = 1;
 
     [Header("Input")]
     public float intendedMovement;
@@ -105,12 +106,17 @@ public class AvatarController : MonoBehaviour {
                 }
             }
 
+            float newFacing = Math.Sign(intendedMovement);
+
             Assert.AreEqual(oldSnapshot, RecordSnapshot(), "Avatar state MUST NOT change during FixedUpdate!");
 
             snapshot.position = transform.position;
             snapshot.state = newState;
             snapshot.acceleration = acceleration;
             snapshot.velocity = velocity;
+            snapshot.facing = newFacing == 0
+                ? facing
+                : newFacing;
 
             commands.Add(new FloatStatisticCommand(FloatStatistic.TimePassed, Time.deltaTime));
             commands.Add(new Vector2StatisticCommand(Vector2Statistic.VelocityOverTime, velocity.magnitude));
@@ -125,7 +131,8 @@ public class AvatarController : MonoBehaviour {
             position = previousPosition,
             velocity = attachedRigidbody.velocity,
             state = state,
-            acceleration = acceleration
+            acceleration = acceleration,
+            facing = facing,
         };
     }
     void ApplySnapshot(AvatarSnapshot snapshot) {
@@ -133,6 +140,7 @@ public class AvatarController : MonoBehaviour {
         attachedRigidbody.velocity = snapshot.velocity;
         state = snapshot.state;
         acceleration = snapshot.acceleration;
+        facing = snapshot.facing;
     }
 
     AvatarState CalculateState() {

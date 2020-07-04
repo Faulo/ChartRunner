@@ -6,7 +6,8 @@ public class AvatarAnimator : MonoBehaviour {
         IsRunning,
         TakeOff,
         IsJumping,
-        IsGrounded
+        IsGrounded,
+        FaceDirection
     }
     [SerializeField, Expandable]
     AvatarController observedAvatar = default;
@@ -21,5 +22,6 @@ public class AvatarAnimator : MonoBehaviour {
         observedAnimator.SetBool(nameof(Parameter.IsRunning), observedAvatar.isRunning);
         observedAnimator.SetBool(nameof(Parameter.IsJumping), observedAvatar.isJumping);
         observedAnimator.SetBool(nameof(Parameter.IsGrounded), observedAvatar.isGrounded);
+        observedAnimator.SetFloat(nameof(Parameter.FaceDirection), observedAvatar.facing);
     }
 }
