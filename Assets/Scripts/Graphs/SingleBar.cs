@@ -40,19 +40,11 @@ public class SingleBar : MonoBehaviour, IGraphComponent {
         spriteRenderer.color = ColorSchemeManager.instance.GetColor(collisionMode);
         AddHeader();
     }
-
-    private void AddHeader() {
-        var text = Instantiate(header, this.transform.position, Quaternion.identity);
+    void AddHeader() {
+        var text = Instantiate(header, transform.position, Quaternion.identity);
         text.GetComponentInChildren<GraphHeader>().singleBar = this;
         text.GetComponentInChildren<GraphHeader>().offset = offset;
     }
-
-    private void AddHeader() {
-        var text = Instantiate(header, this.transform.position, Quaternion.identity);
-        text.GetComponentInChildren<GraphHeader>().singleBar = this;
-        text.GetComponentInChildren<GraphHeader>().offset = offset;
-    }
-
     public void OnValidate() {
         floatValue = 1;
         UpdateTransformNow();

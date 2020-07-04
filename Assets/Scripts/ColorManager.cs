@@ -1,9 +1,10 @@
 ﻿using Slothsoft.UnityExtensions;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ColorManager : MonoBehaviour {
-    [SerializeField]
+    [SerializeField, FormerlySerializedAs("color")]
     SchemeColor schemeColor = default;
     [SerializeField, Expandable]
     SpriteRenderer spriteRenderer = default;
