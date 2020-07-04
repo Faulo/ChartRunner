@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0808e32ebc0e55849aa1cb8330e61fcb, type: 3}
   m_Name: SoftImpulse
   m_EditorClassIdentifier: 
+  strength: 0

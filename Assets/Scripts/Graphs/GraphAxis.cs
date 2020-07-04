@@ -21,11 +21,13 @@ public class GraphAxis : MonoBehaviour {
             labels = new TextMeshProUGUI[labelNames.Length];
             for (int i = 0; i < labels.Length; i++) {
                 // @TODO: fix positioning
+                /*
                 var worldPosition = transform.position + (Vector3.right * labelPositions[i]);
                 labels[i] = Instantiate(labelPrefab);
                 labels[i].text = labelNames[i];
                 var canvasPosition = Camera.main.WorldToScreenPoint(worldPosition);
                 labels[i].rectTransform.anchoredPosition = canvasPosition;
+                //*/
             }
         }
     }

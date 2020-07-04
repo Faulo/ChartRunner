@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0808e32ebc0e55849aa1cb8330e61fcb, type: 3}
-  m_Name: MildImpulse
+  m_Script: {fileID: 11500000, guid: 3271c453ee2b63047b09cc1f39f7eca9, type: 3}
+  m_Name: Instantiate_SteppingParticles
   m_EditorClassIdentifier: 
-  strength: 1
+  prefab: {fileID: 8533816351125216972, guid: 5ca2e507fdb8ab64a973df752f90b052, type: 3}
+  parentToContext: 0
