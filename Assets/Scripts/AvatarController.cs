@@ -28,6 +28,8 @@ public class AvatarController : MonoBehaviour {
     float jumpStopSpeed = 2;
     [SerializeField, Range(0, 10)]
     float gravity = 1;
+    [SerializeField, Range(0, 20)]
+    float isRunningThreshold = 1;
 
     float acceleration = 0;
 
@@ -47,8 +49,9 @@ public class AvatarController : MonoBehaviour {
     }
     public AvatarState stateCache;
 
-    bool isGrounded => state == AvatarState.Grounded;
-    bool isJumping => state == AvatarState.Jumping;
+    public bool isGrounded => state == AvatarState.Grounded;
+    public bool isJumping => state == AvatarState.Jumping;
+    public bool isRunning => isGrounded && Mathf.Abs(attachedRigidbody.velocity.x) > isRunningThreshold;
 
     Vector3 previousPosition;
     void Start() {
