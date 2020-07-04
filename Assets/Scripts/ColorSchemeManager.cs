@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ColorSchemeManager : MonoBehaviour
 {
-    public ColorSchemes[] colorSchemes = default;
+    public ColorScheme[] colorSchemes = default;
 
-    public ColorSchemes currentScheme = default;
+    public ColorScheme currentScheme = default;
 
     public static ColorSchemeManager instance = default;
 

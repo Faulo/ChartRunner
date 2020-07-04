@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ColorSchemes", menuName = "ScriptableObjects/ColorSchemes", order = 1)]
-public class ColorSchemes : ScriptableObject
+public class ColorScheme : ScriptableObject
 {
     public Color mainColor = default;
     public Color backgroundColor = default;

@@ -47,7 +47,7 @@ MonoBehaviour:
   statistic: 0
   scale: 1
   width: 1
-  scalingDuration: 0.1
+  scalingDuration: 0.05
 --- !u!1 &6338803454518449515
 GameObject:
   m_ObjectHideFlags: 0
