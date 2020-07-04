@@ -3,12 +3,14 @@ using UnityEngine;
 
 public class SingleBarGraph : MonoBehaviour {
     [Header("Parameters")]
-    [SerializeField, Range(0, 10), Tooltip("height per unit of each bar")]
+    [SerializeField, Range(0, 10), Tooltip("Height per unit of each bar")]
     float barScale = 1;
-    [SerializeField, Range(0, 10), Tooltip("width of each bar")]
+    [SerializeField, Range(0, 10), Tooltip("Width of each bar")]
     float barWidth = 1;
-    [SerializeField, Range(0, 10), Tooltip("distance between individual bars")]
+    [SerializeField, Range(0, 10), Tooltip("Distance between individual bars")]
     float barDistance = 1;
+    [SerializeField, Range(0, 10), Tooltip("Distance to the Koordinatenursprung")]
+    float margin = 0;
 
     [Header("References")]
     [SerializeField, Expandable]
@@ -28,7 +30,7 @@ public class SingleBarGraph : MonoBehaviour {
             bars[i].gameObject.name = $"Bar_{i}";
             bars[i].scale = barScale;
             bars[i].width = barWidth;
-            bars[i].transform.localPosition = Vector3.right * i * (barDistance + barWidth);
+            bars[i].transform.localPosition = (Vector3.right * i * (barDistance + barWidth)) + new Vector3(margin, margin, 0);
             bars[i].OnValidate();
         }
     }

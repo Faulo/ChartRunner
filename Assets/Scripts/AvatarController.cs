@@ -178,4 +178,8 @@ public class AvatarController : MonoBehaviour {
             attachedRigidbody = GetComponentInParent<Rigidbody2D>();
         }
     }
+    void OnDrawGizmos() {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(groundCheck.position, new Vector3(groundCheckSize.x, groundCheckSize.y, 0));
+    }
 }
