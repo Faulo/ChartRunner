@@ -79,7 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachedRigidbody: {fileID: 3321831704091631758}
   groundCheck: {fileID: 784411874}
-  groundCheckSize: {x: 1, y: 0.125}
+  groundCheckSize: {x: 0.95, y: 0.125}
   groundCheckLayers:
     serializedVersion: 2
     m_Bits: 1536

@@ -3,7 +3,7 @@
 public class SingleBar : MonoBehaviour {
     [Header("Parameters")]
     [SerializeField]
-    FloatStatistic statistic = default;
+    public FloatStatistic statistic = default;
 
     [SerializeField, Range(0, 10)]
     public float scale = 1;
@@ -12,7 +12,7 @@ public class SingleBar : MonoBehaviour {
     [SerializeField, Range(0, 10)]
     float scalingDuration = 1;
 
-    float floatValue;
+    public float floatValue { get; private set; }
     Vector3 targetScale => new Vector3(width, floatValue * scale, 1);
     Vector3 scalingVelocity;
 
