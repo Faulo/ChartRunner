@@ -9,17 +9,6 @@ public class ScatterPlot : MonoBehaviour
     public List<GameObject> dots = default;
     public GameObject dotsPrefab = default;
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void AddDots() {
         GameObject newLine = Instantiate(dotsPrefab, startPos.position, Quaternion.identity);
         newLine.transform.SetParent(this.transform);
