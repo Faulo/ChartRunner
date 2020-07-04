@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 267a64c3f264eea46af4a257e75903bb, type: 3}
   m_Name: RewindPostProcessing
   m_EditorClassIdentifier: 
-  newChromaticAberation: 0
-  newLensDisortion: 0
+  newChromaticAberation: 0.5
+  newLensDisortion: -0.25
