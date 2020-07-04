@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 267a64c3f264eea46af4a257e75903bb, type: 3}
-  m_Name: RewindPostProcessing
+  m_Script: {fileID: 11500000, guid: 3271c453ee2b63047b09cc1f39f7eca9, type: 3}
+  m_Name: Instantiate_SteppingParticles
   m_EditorClassIdentifier: 
-  newChromaticAberation: 0.5
-  newLensDisortion: -0.25
+  prefab: {fileID: 8533816351125216972, guid: 5ca2e507fdb8ab64a973df752f90b052, type: 3}
+  parentToContext: 0
