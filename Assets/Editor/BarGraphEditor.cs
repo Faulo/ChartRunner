@@ -3,15 +3,15 @@ using System.Collections;
 using UnityEditor;
 
 [CustomEditor(typeof(BarGraph))]
-public class LevelScriptEditor : Editor {
+public class BarGraphEditor : Editor {
     public override void OnInspectorGUI() {
 
         DrawDefaultInspector();
 
         BarGraph myTarget = (BarGraph)target;
 
-        if (GUILayout.Button("Add Graph")) {
-            myTarget.AddGraph();
+        if (GUILayout.Button("Add Bar")) {
+            myTarget.AddBar();
         }
     }
 }
