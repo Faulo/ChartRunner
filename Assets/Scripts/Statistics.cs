@@ -13,6 +13,7 @@ public class Statistics : MonoBehaviour {
 
     //IDictionary<IntStatistic, int> intStatistics = new Dictionary<IntStatistic, int>();
     IDictionary<FloatStatistic, float> floatStatistics = new Dictionary<FloatStatistic, float>();
+    IDictionary<FloatStatistic, Func<float>> floatCalculators = new Dictionary<FloatStatistic, Func<float>>();
     IDictionary<DictionaryStatistic, IDictionary<string, float>> dictionaryStatistics = new Dictionary<DictionaryStatistic, IDictionary<string, float>>();
     IDictionary<Vector2Statistic, IList<Vector2>> vector2Statistics = new Dictionary<Vector2Statistic, IList<Vector2>>();
 
@@ -84,11 +85,16 @@ public class Statistics : MonoBehaviour {
     public void Add(FloatStatistic id, float value) {
         floatStatistics[id] += value;
     }
+    internal void AddCalculator(FloatStatistic id, Func<float> calculator) {
+        floatCalculators[id] = calculator;
+    }
     public void Remove(FloatStatistic id, float value) {
         floatStatistics[id] -= value;
     }
     public float Get(FloatStatistic id) {
-        return floatStatistics[id];
+        return floatCalculators.ContainsKey(id)
+            ? floatCalculators[id]()
+            : floatStatistics[id];
     }
 
     //DictionaryPairs are lists of key-value pairs

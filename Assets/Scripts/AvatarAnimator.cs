@@ -1,4 +1,5 @@
-﻿using Slothsoft.UnityExtensions;
+﻿using System.Collections.Generic;
+using Slothsoft.UnityExtensions;
 using UnityEngine;
 
 public class AvatarAnimator : MonoBehaviour {
@@ -16,6 +17,12 @@ public class AvatarAnimator : MonoBehaviour {
 
     void Start() {
         observedAvatar.onJump.AddListener(data => observedAnimator.SetTrigger(nameof(Parameter.TakeOff)));
+        Rewind.instance.onCollectCommands += CollectCommands;
+    }
+
+    void CollectCommands(ICollection<IUndoable> commands) {
+        var state = observedAnimator.GetCurrentAnimatorClipInfo(0)[0];
+        commands.Add(new DictionaryStatisticCommand(DictionaryStatistic.AnimatorState, state.clip.name, Time.deltaTime));
     }
 
     void Update() {
