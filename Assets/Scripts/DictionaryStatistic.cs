@@ -1,3 +1,4 @@
 ﻿public enum DictionaryStatistic {
-    ButtonPressed
+    ButtonPressed,
+    AnimatorState
 }

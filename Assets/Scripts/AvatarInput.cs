@@ -22,7 +22,7 @@ public class AvatarInput : MonoBehaviour, Controls.IPlayerActions {
         }
     }
     public void OnRewind(InputAction.CallbackContext context) {
-        avatar.intendsRewind = context.performed;
+        Rewind.instance.isRewinding = context.performed;
     }
 
     void Awake() {

@@ -12,7 +12,7 @@ public class Audio : MonoBehaviour {
     [SerializeField]
     GameObjectEvent onStart = default;
 
-    public bool playsForward {
+    bool playsForward {
         get => playsForwardCache;
         set {
             if (playsForwardCache != value) {
@@ -39,6 +39,9 @@ public class Audio : MonoBehaviour {
     }
 
     void Start() {
+        Rewind.instance.onStartRewind += context => playsForward = false;
+        Rewind.instance.onStopRewind += context => playsForward = true;
+
         onStart.Invoke(gameObject);
     }
 
