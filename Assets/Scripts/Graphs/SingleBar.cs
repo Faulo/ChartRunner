@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 
-public class SingleBar : MonoBehaviour {
+public class SingleBar : MonoBehaviour, IGraphComponent {
     [Header("Parameters")]
     [SerializeField]
     public FloatStatistic statistic = default;
+    [SerializeField]
+    GraphCollisionMode m_collisionMode = default;
+    public GraphCollisionMode collisionMode => m_collisionMode;
 
     [SerializeField, Range(0, 10)]
     public float scale = 1;
@@ -14,6 +17,7 @@ public class SingleBar : MonoBehaviour {
 
     public float floatValue { get; private set; }
     Vector3 targetScale => new Vector3(width, floatValue * scale, 1);
+
     Vector3 scalingVelocity;
 
     void Update() {
