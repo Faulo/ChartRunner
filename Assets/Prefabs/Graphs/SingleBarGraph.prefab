@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7478610244886363774}
   - component: {fileID: 7478610244886363769}
   m_Layer: 0
-  m_Name: BarGraph
+  m_Name: SingleBarGraph
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,6 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fcf0b301fb7f314c9c82c4aff3de766, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  barScale: 1
+  barWidth: 1
+  barDistance: 1
   bars: []
-  barPrefab: {fileID: 2679484501662128526, guid: f6f6275be0a44e842a498f062ed134a6,
+  barPrefab: {fileID: 4494947726684015808, guid: f6f6275be0a44e842a498f062ed134a6,
     type: 3}
