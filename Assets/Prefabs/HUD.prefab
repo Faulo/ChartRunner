@@ -175,6 +175,44 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onF4:
+    m_PersistentCalls:
+      m_Calls: []
+  onF5:
+    m_PersistentCalls:
+      m_Calls: []
+  onF6:
+    m_PersistentCalls:
+      m_Calls: []
+  onF7:
+    m_PersistentCalls:
+      m_Calls: []
+  onF8:
+    m_PersistentCalls:
+      m_Calls: []
+  onF9:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 9b62104a70313714c8052b7bd8927475, type: 2}
+        m_MethodName: Invoke
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onF10:
+    m_PersistentCalls:
+      m_Calls: []
+  onF11:
+    m_PersistentCalls:
+      m_Calls: []
+  onF12:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7216471302700460951
 GameObject:
   m_ObjectHideFlags: 0

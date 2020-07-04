@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
 
@@ -11,7 +10,8 @@ public class Audio : MonoBehaviour {
     ISet<(AudioSource, AudioSource)> sources = new HashSet<(AudioSource, AudioSource)>();
 
     [SerializeField]
-    AudioInfo[] availableBackgroundMusic = new AudioInfo[0];
+    GameObjectEvent onStart = default;
+
     public bool playsForward {
         get => playsForwardCache;
         set {
@@ -35,11 +35,22 @@ public class Audio : MonoBehaviour {
 
     void OnEnable() {
         instance = this;
+        playsForward = true;
     }
 
     void Start() {
-        if (availableBackgroundMusic.Length > 0) {
-            Play(availableBackgroundMusic.RandomElement());
+        onStart.Invoke(gameObject);
+    }
+
+    void Update() {
+        // destroy finished audio sources
+        foreach (var pair in sources) {
+            if (!pair.Item1.isPlaying && !pair.Item2.isPlaying) {
+                Destroy(pair.Item1.gameObject);
+                Destroy(pair.Item2.gameObject);
+                sources.Remove(pair);
+                break;
+            }
         }
     }
 
@@ -57,23 +68,23 @@ public class Audio : MonoBehaviour {
         backward.outputAudioMixerGroup = audio.mixer;
         backward.pitch = Rewind.instance.rewindSpeed * audio.pitch;
         backward.time = 1 - audio.timeOffset;
-        
+
         if (playsForward) {
             forward.Play();
         } else {
             backward.Play();
         }
 
-        sources.Add((forward, backward));
-
-        if (!audio.loop) {
-            // TODO: make this rewind-compatible
-            StartCoroutine(CreateDestructionRoutine(forward));
+        if (audio.loop) {
+            // can only play 1 looping audio at a time
+            foreach (var pair in sources) {
+                if (pair.Item1.loop) {
+                    pair.Item1.Stop();
+                    pair.Item2.Stop();
+                }
+            }
         }
-    }
 
-    IEnumerator CreateDestructionRoutine(AudioSource source) {
-        yield return new WaitForSeconds(source.clip.length);
-        Destroy(source.gameObject);
+        sources.Add((forward, backward));
     }
 }
