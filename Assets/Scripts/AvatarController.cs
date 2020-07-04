@@ -28,8 +28,20 @@ public class AvatarController : MonoBehaviour {
     float jumpStopSpeed = 2;
     [SerializeField, Range(0, 10)]
     float gravity = 1;
+    [SerializeField, Range(0, 20)]
+    float isRunningThreshold = 1;
 
     float acceleration = 0;
+    public float facing { get; private set; } = 1;
+
+    [Header("Events")]
+    [SerializeField]
+    public GameObjectEvent onJump = default;
+    [SerializeField]
+    public GameObjectEvent onEnterGround = default;
+    [SerializeField]
+    public GameObjectEvent onExitGround = default;
+
 
     [Header("Input")]
     public float intendedMovement;
@@ -47,8 +59,9 @@ public class AvatarController : MonoBehaviour {
     }
     public AvatarState stateCache;
 
-    bool isGrounded => state == AvatarState.Grounded;
-    bool isJumping => state == AvatarState.Jumping;
+    public bool isGrounded => state == AvatarState.Grounded;
+    public bool isJumping => state == AvatarState.Jumping;
+    public bool isRunning => isGrounded && Mathf.Abs(attachedRigidbody.velocity.x) > isRunningThreshold;
 
     Vector3 previousPosition;
     void Start() {
@@ -95,10 +108,12 @@ public class AvatarController : MonoBehaviour {
                     intendsJumpStart = false;
                     newState = AvatarState.Jumping;
                     velocity.y = Mathf.Max(velocity.y, jumpStartSpeed);
-
+                    commands.Add(new EventCommand(gameObject, onJump));
                     commands.Add(new FloatStatisticCommand(FloatStatistic.Jumps, 1));
                 }
             }
+
+            float newFacing = Math.Sign(intendedMovement);
 
             Assert.AreEqual(oldSnapshot, RecordSnapshot(), "Avatar state MUST NOT change during FixedUpdate!");
 
@@ -106,10 +121,20 @@ public class AvatarController : MonoBehaviour {
             snapshot.state = newState;
             snapshot.acceleration = acceleration;
             snapshot.velocity = velocity;
+            snapshot.facing = newFacing == 0
+                ? facing
+                : newFacing;
 
             commands.Add(new FloatStatisticCommand(FloatStatistic.TimePassed, Time.deltaTime));
             commands.Add(new Vector2StatisticCommand(Vector2Statistic.VelocityOverTime, velocity.magnitude));
             commands.Add(new AvatarCommand(oldSnapshot, snapshot, ApplySnapshot));
+
+            if (snapshot.state == AvatarState.Grounded && oldSnapshot.state != AvatarState.Grounded) {
+                commands.Add(new EventCommand(groundCheck.gameObject, onEnterGround));
+            }
+            if (snapshot.state != AvatarState.Grounded && oldSnapshot.state == AvatarState.Grounded) {
+                commands.Add(new EventCommand(groundCheck.gameObject, onExitGround));
+            }
 
             Rewind.instance.Do(commands);
         }
@@ -120,7 +145,8 @@ public class AvatarController : MonoBehaviour {
             position = previousPosition,
             velocity = attachedRigidbody.velocity,
             state = state,
-            acceleration = acceleration
+            acceleration = acceleration,
+            facing = facing,
         };
     }
     void ApplySnapshot(AvatarSnapshot snapshot) {
@@ -128,6 +154,7 @@ public class AvatarController : MonoBehaviour {
         attachedRigidbody.velocity = snapshot.velocity;
         state = snapshot.state;
         acceleration = snapshot.acceleration;
+        facing = snapshot.facing;
     }
 
     AvatarState CalculateState() {
@@ -150,5 +177,9 @@ public class AvatarController : MonoBehaviour {
         if (!attachedRigidbody) {
             attachedRigidbody = GetComponentInParent<Rigidbody2D>();
         }
+    }
+    void OnDrawGizmos() {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(groundCheck.position, new Vector3(groundCheckSize.x, groundCheckSize.y, 0));
     }
 }

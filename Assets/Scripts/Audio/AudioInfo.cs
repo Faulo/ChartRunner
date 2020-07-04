@@ -1,13 +1,20 @@
 ﻿using System;
+using Slothsoft.UnityExtensions;
 using UnityEngine;
 using UnityEngine.Audio;
 
 [Serializable]
 public class AudioInfo {
-    public AudioClip clip;
-    public AudioClip clipReversed;
-    public bool loop;
-    public AudioMixerGroup mixer;
-    public float pitch;
-    public float timeOffset;
+    [SerializeField, Expandable]
+    public AudioClip clip = default;
+    [SerializeField, Expandable]
+    public AudioClip clipReversed = default;
+    [SerializeField]
+    public bool loop = false;
+    [SerializeField, Expandable]
+    public AudioMixerGroup mixer = default;
+    [SerializeField, Range(0, 10)]
+    public float pitch = 1;
+    [SerializeField, Range(0, 60)]
+    public float timeOffset = 0;
 }
