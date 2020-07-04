@@ -12,13 +12,13 @@ public class GraphCollisions : MonoBehaviour {
         if (other.TryGetComponent<GraphCollider>(out var collider)) {
             switch (collider.collisionMode) {
                 case GraphCollisionMode.Solid:
-                    onSolidCollisionEnter.Invoke(other);
+                    onSolidCollisionEnter.Invoke(gameObject);
                     break;
                 case GraphCollisionMode.Intangible:
-                    onIntangibleCollisionEnter.Invoke(other);
+                    onIntangibleCollisionEnter.Invoke(gameObject);
                     break;
                 case GraphCollisionMode.DeathZone:
-                    onDeahtZoneCollisionEnter.Invoke(other);
+                    onDeahtZoneCollisionEnter.Invoke(gameObject);
                     break;
             }
         }

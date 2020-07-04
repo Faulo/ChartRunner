@@ -264,6 +264,102 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   observedAvatar: {fileID: 3321831704091631745}
   observedAnimator: {fileID: 8786747587764901688}
+--- !u!58 &5614171028135584556
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8786747586546064581}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.1
+--- !u!114 &3746258546040960818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8786747586546064581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f4adada53fac09459fc83f878277323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSolidCollisionEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: f8de1787ede53804e80a55903c6765ae, type: 2}
+        m_MethodName: Invoke
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onIntangibleCollisionEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeahtZoneCollisionEnter:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!58 &4155888788256048307
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8786747587519125092}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.1
+--- !u!114 &3955754555819165195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8786747587519125092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f4adada53fac09459fc83f878277323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSolidCollisionEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: f8de1787ede53804e80a55903c6765ae, type: 2}
+        m_MethodName: Invoke
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onIntangibleCollisionEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeahtZoneCollisionEnter:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &628730473364346139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -508,6 +604,18 @@ Transform:
 --- !u!95 &8786747587764901688 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 8163195887324430883, guid: 784cdfabb99ffe6429667c58a03ed0fe,
+    type: 3}
+  m_PrefabInstance: {fileID: 628730473364346139}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8786747586546064581 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8163195888521513438, guid: 784cdfabb99ffe6429667c58a03ed0fe,
+    type: 3}
+  m_PrefabInstance: {fileID: 628730473364346139}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8786747587519125092 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8163195886944469887, guid: 784cdfabb99ffe6429667c58a03ed0fe,
     type: 3}
   m_PrefabInstance: {fileID: 628730473364346139}
   m_PrefabAsset: {fileID: 0}
