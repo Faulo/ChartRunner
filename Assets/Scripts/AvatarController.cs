@@ -70,6 +70,18 @@ public class AvatarController : MonoBehaviour {
         Statistics.instance.AddCalculator(FloatStatistic.CurrentSpeed, () => attachedRigidbody.velocity.magnitude);
 
         StartCoroutine(PositionSaver());
+
+        Rewind.instance.onCollectCommands += CollectCommands;
+        Rewind.instance.onStartRewind += StartRewindListener;
+        Rewind.instance.onStopRewind += StopRewindListener;
+    }
+
+
+    void StartRewindListener(GameObject context) {
+        attachedRigidbody.simulated = false;
+    }
+    void StopRewindListener(GameObject context) {
+        attachedRigidbody.simulated = true;
     }
 
     IEnumerator PositionSaver() {
@@ -79,68 +91,64 @@ public class AvatarController : MonoBehaviour {
         }
     }
 
-    void FixedUpdate() {
-        Audio.instance.playsForward = !intendsRewind;
+    void CollectCommands(ICollection<IUndoable> commands) {
+        var oldSnapshot = RecordSnapshot();
+        var snapshot = new AvatarSnapshot();
 
-        if (intendsRewind) {
-            Rewind.instance.Undo();
+        var newState = CalculateState();
+        float acceleration = snapshot.acceleration;
+        float targetSpeed = intendedMovement * movementSpeed;
+
+        var velocity = attachedRigidbody.velocity;
+        if (Math.Sign(targetSpeed) != Math.Sign(velocity.x)) {
+            // instant break if direction changes
+            velocity.x = 0;
+            acceleration = 0;
+        }
+        velocity.x = Mathf.SmoothDamp(velocity.x, targetSpeed, ref acceleration, accelerationDuration);
+        velocity += Physics2D.gravity * gravity * Time.deltaTime;
+        if (newState == AvatarState.Jumping) {
+            if (!intendsJump || velocity.y < jumpStopSpeed) {
+                newState = AvatarState.Falling;
+                velocity.y = Mathf.Min(velocity.y, jumpStopSpeed);
+            }
         } else {
-            var oldSnapshot = RecordSnapshot();
-            var snapshot = new AvatarSnapshot();
-
-            var commands = new List<IUndoable>();
-
-            var newState = CalculateState();
-            float acceleration = snapshot.acceleration;
-            float targetSpeed = intendedMovement * movementSpeed;
-
-            var velocity = attachedRigidbody.velocity;
-            if (Math.Sign(targetSpeed) != Math.Sign(velocity.x)) {
-                // instant break if direction changes
-                velocity.x = 0;
-                acceleration = 0;
+            if (intendsJumpStart && newState == AvatarState.Grounded) {
+                intendsJumpStart = false;
+                newState = AvatarState.Jumping;
+                velocity.y = Mathf.Max(velocity.y, jumpStartSpeed);
+                commands.Add(new EventCommand(gameObject, onJump));
+                commands.Add(new FloatStatisticCommand(FloatStatistic.Jumps, 1));
             }
-            velocity.x = Mathf.SmoothDamp(velocity.x, targetSpeed, ref acceleration, accelerationDuration);
-            velocity += Physics2D.gravity * gravity * Time.deltaTime;
-            if (newState == AvatarState.Jumping) {
-                if (!intendsJump || velocity.y < jumpStopSpeed) {
-                    newState = AvatarState.Falling;
-                    velocity.y = Mathf.Min(velocity.y, jumpStopSpeed);
-                }
-            } else {
-                if (intendsJumpStart && newState == AvatarState.Grounded) {
-                    intendsJumpStart = false;
-                    newState = AvatarState.Jumping;
-                    velocity.y = Mathf.Max(velocity.y, jumpStartSpeed);
-                    commands.Add(new EventCommand(gameObject, onJump));
-                    commands.Add(new FloatStatisticCommand(FloatStatistic.Jumps, 1));
-                }
-            }
+        }
 
-            float newFacing = Math.Sign(intendedMovement);
+        float newFacing = Math.Sign(intendedMovement);
 
-            Assert.AreEqual(oldSnapshot, RecordSnapshot(), "Avatar state MUST NOT change during FixedUpdate!");
+        Assert.AreEqual(oldSnapshot, RecordSnapshot(), "Avatar state MUST NOT change during FixedUpdate!");
 
-            snapshot.position = transform.position;
-            snapshot.state = newState;
-            snapshot.acceleration = acceleration;
-            snapshot.velocity = velocity;
-            snapshot.facing = newFacing == 0
-                ? facing
-                : newFacing;
+        snapshot.position = transform.position;
+        snapshot.state = newState;
+        snapshot.acceleration = acceleration;
+        snapshot.velocity = velocity;
+        snapshot.facing = newFacing == 0
+            ? facing
+            : newFacing;
 
-            commands.Add(new FloatStatisticCommand(FloatStatistic.TimePassed, Time.deltaTime));
-            commands.Add(new Vector2StatisticCommand(Vector2Statistic.VelocityOverTime, velocity.magnitude));
-            commands.Add(new AvatarCommand(oldSnapshot, snapshot, ApplySnapshot));
+        commands.Add(new FloatStatisticCommand(FloatStatistic.TimePassed, Time.deltaTime));
+        commands.Add(new Vector2StatisticCommand(Vector2Statistic.VelocityOverTime, velocity.magnitude));
+        commands.Add(new AvatarCommand(oldSnapshot, snapshot, ApplySnapshot));
 
-            if (snapshot.state == AvatarState.Grounded && oldSnapshot.state != AvatarState.Grounded) {
-                commands.Add(new EventCommand(groundCheck.gameObject, onEnterGround));
-            }
-            if (snapshot.state != AvatarState.Grounded && oldSnapshot.state == AvatarState.Grounded) {
-                commands.Add(new EventCommand(groundCheck.gameObject, onExitGround));
-            }
+        if (snapshot.state == AvatarState.Grounded) {
+            commands.Add(new FloatStatisticCommand(FloatStatistic.GroundedTime, Time.deltaTime));
+        } else {
+            commands.Add(new FloatStatisticCommand(FloatStatistic.AirborneTime, Time.deltaTime));
+        }
 
-            Rewind.instance.Do(commands);
+        if (snapshot.state == AvatarState.Grounded && oldSnapshot.state != AvatarState.Grounded) {
+            commands.Add(new EventCommand(groundCheck.gameObject, onEnterGround));
+        }
+        if (snapshot.state != AvatarState.Grounded && oldSnapshot.state == AvatarState.Grounded) {
+            commands.Add(new EventCommand(groundCheck.gameObject, onExitGround));
         }
     }
 

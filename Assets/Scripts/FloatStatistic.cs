@@ -3,5 +3,7 @@
     TimePassed,
     CurrentX,
     CurrentY,
-    CurrentSpeed
+    CurrentSpeed,
+    GroundedTime,
+    AirborneTime,
 }
