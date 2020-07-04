@@ -150,6 +150,7 @@ public class AvatarController : MonoBehaviour {
         if (snapshot.state != AvatarState.Grounded && oldSnapshot.state == AvatarState.Grounded) {
             commands.Add(new EventCommand(groundCheck.gameObject, onExitGround));
         }
+        commands.Add(new Vector2StatisticCommand(Vector2Statistic.CurrentPosition, snapshot.position));
     }
 
     AvatarSnapshot RecordSnapshot() {

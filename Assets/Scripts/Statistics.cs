@@ -5,6 +5,8 @@ using System.Text;
 using UnityEngine;
 
 public class Statistics : MonoBehaviour {
+    public event Action<Vector2Statistic, Vector2> onAddVector2;
+    public event Action<Vector2Statistic, Vector2> onRemoveVector2;
 
     public static Statistics instance;
 
@@ -121,11 +123,13 @@ public class Statistics : MonoBehaviour {
     //Vector2Pairs are lists of Vector2 values
     public void Add(Vector2Statistic id, Vector2 value) {
         vector2Statistics[id].Add(value);
+        onAddVector2?.Invoke(id, value);
     }
     public void Remove(Vector2Statistic id, Vector2 value) {
         for (int i = vector2Statistics[id].Count - 1; i >= 0; i--) {
             if (vector2Statistics[id][i] == value) {
                 vector2Statistics[id].RemoveAt(i);
+                onRemoveVector2?.Invoke(id, value);
                 break;
             }
         }
