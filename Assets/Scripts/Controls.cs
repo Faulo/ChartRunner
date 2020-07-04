@@ -6,9 +6,11 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public class @Controls : IInputActionCollection, IDisposable {
+public class @Controls : IInputActionCollection, IDisposable
+{
     public InputActionAsset asset { get; }
-    public @Controls() {
+    public @Controls()
+    {
         asset = InputActionAsset.FromJson(@"{
     ""name"": ""Controls"",
     ""maps"": [
@@ -329,50 +331,59 @@ public class @Controls : IInputActionCollection, IDisposable {
         m_Player_Rewind = m_Player.FindAction("Rewind", throwIfNotFound: true);
     }
 
-    public void Dispose() {
+    public void Dispose()
+    {
         UnityEngine.Object.Destroy(asset);
     }
 
-    public InputBinding? bindingMask {
+    public InputBinding? bindingMask
+    {
         get => asset.bindingMask;
         set => asset.bindingMask = value;
     }
 
-    public ReadOnlyArray<InputDevice>? devices {
+    public ReadOnlyArray<InputDevice>? devices
+    {
         get => asset.devices;
         set => asset.devices = value;
     }
 
     public ReadOnlyArray<InputControlScheme> controlSchemes => asset.controlSchemes;
 
-    public bool Contains(InputAction action) {
+    public bool Contains(InputAction action)
+    {
         return asset.Contains(action);
     }
 
-    public IEnumerator<InputAction> GetEnumerator() {
+    public IEnumerator<InputAction> GetEnumerator()
+    {
         return asset.GetEnumerator();
     }
 
-    IEnumerator IEnumerable.GetEnumerator() {
+    IEnumerator IEnumerable.GetEnumerator()
+    {
         return GetEnumerator();
     }
 
-    public void Enable() {
+    public void Enable()
+    {
         asset.Enable();
     }
 
-    public void Disable() {
+    public void Disable()
+    {
         asset.Disable();
     }
 
     // Player
-    readonly InputActionMap m_Player;
-    IPlayerActions m_PlayerActionsCallbackInterface;
-    readonly InputAction m_Player_Move;
-    readonly InputAction m_Player_Jump;
-    readonly InputAction m_Player_Rewind;
-    public struct PlayerActions {
-        @Controls m_Wrapper;
+    private readonly InputActionMap m_Player;
+    private IPlayerActions m_PlayerActionsCallbackInterface;
+    private readonly InputAction m_Player_Move;
+    private readonly InputAction m_Player_Jump;
+    private readonly InputAction m_Player_Rewind;
+    public struct PlayerActions
+    {
+        private @Controls m_Wrapper;
         public PlayerActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
@@ -382,8 +393,10 @@ public class @Controls : IInputActionCollection, IDisposable {
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
         public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
-        public void SetCallbacks(IPlayerActions instance) {
-            if (m_Wrapper.m_PlayerActionsCallbackInterface != null) {
+        public void SetCallbacks(IPlayerActions instance)
+        {
+            if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
+            {
                 @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
@@ -395,7 +408,8 @@ public class @Controls : IInputActionCollection, IDisposable {
                 @Rewind.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRewind;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
-            if (instance != null) {
+            if (instance != null)
+            {
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
@@ -409,7 +423,8 @@ public class @Controls : IInputActionCollection, IDisposable {
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
-    public interface IPlayerActions {
+    public interface IPlayerActions
+    {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnRewind(InputAction.CallbackContext context);

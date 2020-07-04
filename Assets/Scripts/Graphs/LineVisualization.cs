@@ -19,14 +19,15 @@ public class LineVisualization : MonoBehaviour
         
 
         foreach (var position in curStatistic) {
-            lineRenderer.positionCount = count + 1;
-            if (lineRenderer.positionCount <= count) {
-                //DER ENTSTEHENDE VEKTOR FUNKTIONIERT NICHT
-                print(position.x + " " + position.y);
-                lineRenderer.SetPosition(count, new Vector3(position.x, position.y, 0));
+            if (position.x >= curStep) {
+                lineRenderer.positionCount = count + 1;
+
+                Vector3 newPos = new Vector3(this.transform.position.x + position.x, this.transform.position.y + position.y, 0);
+                //print(newPos);
+                lineRenderer.SetPosition(count, newPos);
+                curStep += stepSize;
+                count += 1;
             }
-                
-            count += 1;
         }
         
     }
