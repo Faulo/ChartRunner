@@ -92,7 +92,29 @@ MonoBehaviour:
   isRunningThreshold: 1
   onJump:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: a3fe06a73a23cb645bc0c0f7f5095900, type: 2}
+        m_MethodName: Invoke
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: dbafd90bd49b0d643ab4dd7e448c7406, type: 2}
+        m_MethodName: Invoke
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onEnterGround:
     m_PersistentCalls:
       m_Calls:
@@ -118,10 +140,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onExitGround:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: dbafd90bd49b0d643ab4dd7e448c7406, type: 2}
+      - m_Target: {fileID: 11400000, guid: d49c0d28028c1cd41b518561453f2ce4, type: 2}
         m_MethodName: Invoke
         m_Mode: 0
         m_Arguments:
@@ -132,6 +151,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onExitGround:
+    m_PersistentCalls:
+      m_Calls: []
   intendedMovement: 0
   intendsJumpStart: 0
   intendsJump: 0
@@ -317,6 +339,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 8b0d6d0bb1fe92f40912abb83ce4aacc, type: 2}
+        m_MethodName: Invoke
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onIntangibleCollisionEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -355,6 +388,17 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: f8de1787ede53804e80a55903c6765ae, type: 2}
+        m_MethodName: Invoke
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 8b0d6d0bb1fe92f40912abb83ce4aacc, type: 2}
         m_MethodName: Invoke
         m_Mode: 0
         m_Arguments:
@@ -483,6 +527,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Strichmensch
       objectReference: {fileID: 0}
+    - target: {fileID: 7010226504064142496, guid: 784cdfabb99ffe6429667c58a03ed0fe,
+        type: 3}
+      propertyPath: m_Bounds.m_Center.y
+      value: 0.00000023841858
+      objectReference: {fileID: 0}
     - target: {fileID: 7380391772519661713, guid: 784cdfabb99ffe6429667c58a03ed0fe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -597,6 +646,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 2.653
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412763743083551360, guid: 784cdfabb99ffe6429667c58a03ed0fe,
+        type: 3}
+      propertyPath: m_Bounds.m_Center.y
+      value: -0.00025334954
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 784cdfabb99ffe6429667c58a03ed0fe, type: 3}
