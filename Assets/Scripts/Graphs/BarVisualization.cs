@@ -10,8 +10,11 @@ public class BarVisualization : MonoBehaviour
 
     float yOffset = 0.256f;
     float yPos = 0f;
+
+    Transform parent = default;
     private void Start() {
-        yPos = this.transform.position.y;
+        parent = GetComponentInParent<Transform>();
+        yPos = parent.transform.position.y;
     }
 
     void Update() {
@@ -21,6 +24,6 @@ public class BarVisualization : MonoBehaviour
         this.transform.localScale = new Vector3(0.1f, value / 10f, 0.1f);
 
         
-        this.transform.position = new Vector3(this.transform.position.x, yPos + value * yOffset, 0);
+        this.transform.position = new Vector3(this.transform.position.x, yPos, 0);
     }
 }

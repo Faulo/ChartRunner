@@ -9,17 +9,6 @@ public class LineGraph : MonoBehaviour
     public List<GameObject> lines = default;
     public GameObject linePrefab = default;
 
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
     public void AddLine() {
         GameObject newLine = Instantiate(linePrefab, startPos.position, Quaternion.identity);
         newLine.transform.SetParent(this.transform);
