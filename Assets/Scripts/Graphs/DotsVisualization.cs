@@ -30,10 +30,11 @@ public class DotsVisualization : MonoBehaviour
         foreach (var position in curStatistic) {
             if (position.x >= curStep) {
 
-                Vector3 newPos = new Vector3(this.transform.localPosition.x + position.x, this.transform.localPosition.y + position.y, 0);
                 //print(newPos);
-                GameObject newDot = Instantiate(dotPrefab, newPos, Quaternion.identity);
+                GameObject newDot = Instantiate(dotPrefab, this.transform.position, Quaternion.identity);
                 newDot.transform.SetParent(this.transform);
+                Vector3 newPos = new Vector3(newDot.transform.position.x + position.x, newDot.transform.position.y + position.y, 0);
+                newDot.transform.position = newPos;
                 curDots.Add(newDot);
 
                 lastValue = position.x;
