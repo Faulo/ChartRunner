@@ -1,3 +1,5 @@
-﻿public enum IntStatistic {
+﻿/*
+public enum IntStatistic {
     Jumps
 }
+//*/

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using UnityEngine;
 
@@ -10,16 +11,18 @@ public class Statistics : MonoBehaviour {
     [Multiline(20)]
     public string statusText;
 
-    IDictionary<IntStatistic, int> intStatistics = new Dictionary<IntStatistic, int>();
+    //IDictionary<IntStatistic, int> intStatistics = new Dictionary<IntStatistic, int>();
     IDictionary<FloatStatistic, float> floatStatistics = new Dictionary<FloatStatistic, float>();
     IDictionary<DictionaryStatistic, IDictionary<string, float>> dictionaryStatistics = new Dictionary<DictionaryStatistic, IDictionary<string, float>>();
     IDictionary<Vector2Statistic, IList<Vector2>> vector2Statistics = new Dictionary<Vector2Statistic, IList<Vector2>>();
 
     void Awake() {
         instance = this;
+        /*
         foreach (IntStatistic key in Enum.GetValues(typeof(IntStatistic))) {
             intStatistics[key] = 0;
         }
+        //*/
         foreach (FloatStatistic key in Enum.GetValues(typeof(FloatStatistic))) {
             floatStatistics[key] = 0;
         }
@@ -34,11 +37,13 @@ public class Statistics : MonoBehaviour {
     void Update() {
         var builder = new StringBuilder();
 
+        /*
         builder.AppendLine(nameof(intStatistics));
         foreach (var pair in intStatistics) {
             builder.AppendLine($"{pair.Key}: {pair.Value}");
         }
         builder.AppendLine();
+        //*/
 
         builder.AppendLine(nameof(floatStatistics));
         foreach (var pair in floatStatistics) {
@@ -48,20 +53,22 @@ public class Statistics : MonoBehaviour {
 
         builder.AppendLine(nameof(dictionaryStatistics));
         foreach (var pair in dictionaryStatistics) {
-            builder.AppendLine($"{pair.Key}: {pair.Value}");
+            builder.Append($"{pair.Key}: ");
+            builder.AppendLine(string.Join(" | ", pair.Value.Select(p => $"{p.Key}: {p.Value}")));
         }
         builder.AppendLine();
 
         builder.AppendLine(nameof(vector2Statistics));
         foreach (var pair in vector2Statistics) {
-            builder.AppendLine($"{pair.Key}: {string.Join(", ", pair.Value)}");
+            builder.AppendLine($"{pair.Key}: {pair.Value.DefaultIfEmpty(Vector2.zero).Last()}");
         }
         builder.AppendLine();
 
         statusText = builder.ToString();
     }
 
-    //FloatPair are singular integer values
+    /*
+    //IntPair are singular integer values
     public void Add(IntStatistic id, int value) {
         intStatistics[id] += value;
     }
@@ -71,6 +78,7 @@ public class Statistics : MonoBehaviour {
     public int Get(IntStatistic id) {
         return intStatistics[id];
     }
+    //*/
 
     //FloatPair are singular floating-point values
     public void Add(FloatStatistic id, float value) {
