@@ -65,6 +65,10 @@ public class AvatarController : MonoBehaviour {
 
     Vector3 previousPosition;
     void Start() {
+        Statistics.instance.AddCalculator(FloatStatistic.CurrentX, () => attachedRigidbody.position.x);
+        Statistics.instance.AddCalculator(FloatStatistic.CurrentY, () => attachedRigidbody.position.y);
+        Statistics.instance.AddCalculator(FloatStatistic.CurrentSpeed, () => attachedRigidbody.velocity.magnitude);
+
         StartCoroutine(PositionSaver());
     }
 
