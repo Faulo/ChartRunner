@@ -6,8 +6,6 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 public class AvatarController : MonoBehaviour {
-    public event Action<GameObject> onJump;
-
     [Header("MonoBehaviour configuration")]
     [SerializeField, Expandable]
     Rigidbody2D attachedRigidbody = default;
@@ -35,6 +33,15 @@ public class AvatarController : MonoBehaviour {
 
     float acceleration = 0;
     public float facing { get; private set; } = 1;
+
+    [Header("Events")]
+    [SerializeField]
+    public GameObjectEvent onJump = default;
+    [SerializeField]
+    public GameObjectEvent onEnterGround = default;
+    [SerializeField]
+    public GameObjectEvent onExitGround = default;
+
 
     [Header("Input")]
     public float intendedMovement;
@@ -101,8 +108,8 @@ public class AvatarController : MonoBehaviour {
                     intendsJumpStart = false;
                     newState = AvatarState.Jumping;
                     velocity.y = Mathf.Max(velocity.y, jumpStartSpeed);
+                    commands.Add(new EventCommand(gameObject, onJump));
                     commands.Add(new FloatStatisticCommand(FloatStatistic.Jumps, 1));
-                    onJump?.Invoke(gameObject);
                 }
             }
 
@@ -121,6 +128,13 @@ public class AvatarController : MonoBehaviour {
             commands.Add(new FloatStatisticCommand(FloatStatistic.TimePassed, Time.deltaTime));
             commands.Add(new Vector2StatisticCommand(Vector2Statistic.VelocityOverTime, velocity.magnitude));
             commands.Add(new AvatarCommand(oldSnapshot, snapshot, ApplySnapshot));
+
+            if (snapshot.state == AvatarState.Grounded && oldSnapshot.state != AvatarState.Grounded) {
+                commands.Add(new EventCommand(groundCheck.gameObject, onEnterGround));
+            }
+            if (snapshot.state != AvatarState.Grounded && oldSnapshot.state == AvatarState.Grounded) {
+                commands.Add(new EventCommand(groundCheck.gameObject, onExitGround));
+            }
 
             Rewind.instance.Do(commands);
         }

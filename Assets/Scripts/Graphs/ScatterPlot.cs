@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class ScatterPlot : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Transform startPos = default;
+
+    public List<GameObject> dots = default;
+    public GameObject dotsPrefab = default;
+
     void Start()
     {
         
@@ -17,6 +21,9 @@ public class ScatterPlot : MonoBehaviour
     }
 
     public void AddDots() {
-
+        GameObject newLine = Instantiate(dotsPrefab, startPos.position, Quaternion.identity);
+        newLine.transform.SetParent(this.transform);
+        newLine.name = "Dots" + dots.Count;
+        dots.Add(newLine);
     }
 }

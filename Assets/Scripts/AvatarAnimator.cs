@@ -14,8 +14,8 @@ public class AvatarAnimator : MonoBehaviour {
     [SerializeField, Expandable]
     Animator observedAnimator = default;
 
-    void Awake() {
-        observedAvatar.onJump += data => observedAnimator.SetTrigger(nameof(Parameter.TakeOff));
+    void Start() {
+        observedAvatar.onJump.AddListener(data => observedAnimator.SetTrigger(nameof(Parameter.TakeOff)));
     }
 
     void Update() {
