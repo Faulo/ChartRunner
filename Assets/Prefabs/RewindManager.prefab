@@ -43,3 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f5945c176c5f8d4fba947807b579559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rewindSpeed: 2

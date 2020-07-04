@@ -47,16 +47,19 @@ MonoBehaviour:
     type: 3}
   availableBackgroundMusic:
   - clip: {fileID: 8300000, guid: bfa790d674d83124c99750a343319d24, type: 3}
+    clipReversed: {fileID: 8300000, guid: 57906fa5a4524fc45babca7e773b2797, type: 3}
     loop: 1
     mixer: {fileID: 1778211122485115795, guid: 5b5f602883af3c84b84abbdf16d3169a, type: 2}
     pitch: 1
     timeOffset: 0
   - clip: {fileID: 8300000, guid: d18269ecab0a4c44db92460737c30b95, type: 3}
+    clipReversed: {fileID: 8300000, guid: 11a0aa440936768478acba7e7bec9788, type: 3}
     loop: 1
     mixer: {fileID: 1778211122485115795, guid: 5b5f602883af3c84b84abbdf16d3169a, type: 2}
     pitch: 1
     timeOffset: 0
   - clip: {fileID: 8300000, guid: 7f24bec73d1cac3498a31e011c0a536f, type: 3}
+    clipReversed: {fileID: 8300000, guid: 86218f79260af334ca6731da8f775079, type: 3}
     loop: 1
     mixer: {fileID: 1778211122485115795, guid: 5b5f602883af3c84b84abbdf16d3169a, type: 2}
     pitch: 1

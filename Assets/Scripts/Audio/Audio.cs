@@ -8,7 +8,7 @@ public class Audio : MonoBehaviour {
 
     [SerializeField, Expandable]
     AudioSource sourcePrefab = default;
-    ISet<AudioSource> sources = new HashSet<AudioSource>();
+    ISet<(AudioSource, AudioSource)> sources = new HashSet<(AudioSource, AudioSource)>();
 
     [SerializeField]
     AudioInfo[] availableBackgroundMusic = new AudioInfo[0];
@@ -17,14 +17,21 @@ public class Audio : MonoBehaviour {
         set {
             if (playsForwardCache != value) {
                 playsForwardCache = value;
-                foreach (var source in sources) {
-                    source.pitch = playsForwardPitch;
+                foreach (var (forward, backward) in sources) {
+                    if (value) {
+                        forward.time = forward.clip.length - backward.time;
+                        backward.Stop();
+                        forward.Play();
+                    } else {
+                        backward.time = backward.clip.length - forward.time;
+                        forward.Stop();
+                        backward.Play();
+                    }
                 }
             }
         }
     }
     bool playsForwardCache;
-    int playsForwardPitch => playsForward ? 1 : -2;
 
     void OnEnable() {
         instance = this;
@@ -37,19 +44,31 @@ public class Audio : MonoBehaviour {
     }
 
     public void Play(AudioInfo audio) {
-        var source = Instantiate(sourcePrefab, transform);
-        source.loop = audio.loop;
-        source.clip = audio.clip;
-        source.outputAudioMixerGroup = audio.mixer;
-        source.pitch = audio.pitch;
-        source.time = audio.timeOffset;
-        source.Play();
+        var forward = Instantiate(sourcePrefab, transform);
+        forward.loop = audio.loop;
+        forward.clip = audio.clip;
+        forward.outputAudioMixerGroup = audio.mixer;
+        forward.pitch = audio.pitch;
+        forward.time = audio.timeOffset;
 
-        sources.Add(source);
+        var backward = Instantiate(sourcePrefab, transform);
+        backward.loop = audio.loop;
+        backward.clip = audio.clipReversed;
+        backward.outputAudioMixerGroup = audio.mixer;
+        backward.pitch = Rewind.instance.rewindSpeed * audio.pitch;
+        backward.time = 1 - audio.timeOffset;
+        
+        if (playsForward) {
+            forward.Play();
+        } else {
+            backward.Play();
+        }
+
+        sources.Add((forward, backward));
 
         if (!audio.loop) {
             // TODO: make this rewind-compatible
-            StartCoroutine(CreateDestructionRoutine(source));
+            StartCoroutine(CreateDestructionRoutine(forward));
         }
     }
 

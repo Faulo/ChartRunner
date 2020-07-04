@@ -67,7 +67,6 @@ public class AvatarController : MonoBehaviour {
 
         if (intendsRewind) {
             Rewind.instance.Undo();
-            Rewind.instance.Undo();
         } else {
             var oldSnapshot = RecordSnapshot();
             var snapshot = new AvatarSnapshot();

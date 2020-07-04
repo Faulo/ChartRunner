@@ -7,6 +7,9 @@ public class Rewind : MonoBehaviour {
 
     Stack<ICollection<IUndoable>> timeline = new Stack<ICollection<IUndoable>>();
 
+    [SerializeField, Range(0, 10)]
+    public int rewindSpeed = 1;
+
     void Awake() {
         instance = this;
     }
@@ -18,9 +21,11 @@ public class Rewind : MonoBehaviour {
         }
     }
     public void Undo() {
-        if (timeline.Count > 0) {
-            foreach (var command in timeline.Pop().Reverse()) {
-                command.Undo();
+        for (int i = 0; i < rewindSpeed; i++) {
+            if (timeline.Count > 0) {
+                foreach (var command in timeline.Pop().Reverse()) {
+                    command.Undo();
+                }
             }
         }
     }
