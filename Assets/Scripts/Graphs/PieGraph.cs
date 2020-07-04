@@ -23,6 +23,9 @@ public class PieGraph : MonoBehaviour
         if (true) {
             value = Statistics.instance.Get(floatStatistic);
         } else {
+            foreach (var (name, value) in Statistics.instance.Get(dictionaryStatistic)) {
+
+            }
             var curDict = Statistics.instance.Get(dictionaryStatistic);
             foreach(var keyValuePair in curDict) {
                 value = keyValuePair.Item2;
