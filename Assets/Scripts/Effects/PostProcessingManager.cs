@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-public class PostProcessingEffect : MonoBehaviour
+public class PostProcessingManager : MonoBehaviour
 {
     public float targetChromaticAberration = 0;
     public float targetLensDisortion = 0;
@@ -14,7 +14,7 @@ public class PostProcessingEffect : MonoBehaviour
     ChromaticAberration chromaticAberration;
 
 
-    public static PostProcessingEffect instance;
+    public static PostProcessingManager instance;
 
     void Awake() {
         instance = this;
@@ -28,8 +28,11 @@ public class PostProcessingEffect : MonoBehaviour
         chromaticAberration.intensity.value = Mathf.Lerp(chromaticAberration.intensity.value, targetChromaticAberration, Time.deltaTime);
     }
 
-    public void ChangePostProcessing(float newLensDisortion, float newChromaticAberration) {
+    public void ChangeLensDisortion(float newLensDisortion) {
         targetLensDisortion = newLensDisortion;
+    }
+
+    public void ChangeChromaticAberration(float newChromaticAberration) {
         targetChromaticAberration = newChromaticAberration;
     }
 }
