@@ -12,32 +12,31 @@ public class ColorScheme : ScriptableObject
     public Color negativeHighlightColor = default;
     public Color positiveHighlightColor = default;
 
-    public void ApplyColorScheme() {
-        ColorManager[] colorManagers = FindObjectsOfType<ColorManager>();
-        foreach(ColorManager color in colorManagers) {
-            switch (color.color) {
-                case SchemeColor.mainColor:
-                    color.Colorize(mainColor);
-                    break;
-                case SchemeColor.foregroundColor:
-                    color.Colorize(foregroundColor);
-                    break;
-                case SchemeColor.backgroundColor:
-                    color.Colorize(backgroundColor);
-                    break;
-                case SchemeColor.highlightColor:
-                    color.Colorize(highlightColor);
-                    break;
-                case SchemeColor.negativeHighlightColor:
-                    color.Colorize(negativeHighlightColor);
-                    break;
-                case SchemeColor.positiveHighlightColor:
-                    color.Colorize(positiveHighlightColor);
-                    break;
-                default:
-                    color.Colorize(mainColor);
-                    break;
-            }
+    public void ApplyColorScheme(ColorManager curManager) {
+        //Debug.Log("Lol");
+        SchemeColor curColor = curManager.color;
+        switch (curColor) {
+                   case SchemeColor.mainColor:
+                        curManager.Colorize(mainColor);
+                        break;
+                    case SchemeColor.foregroundColor:
+                        curManager.Colorize(foregroundColor);
+                        break;
+                   case SchemeColor.backgroundColor:
+                        curManager.Colorize(backgroundColor);
+                        break;
+                    case SchemeColor.highlightColor:
+                        curManager.Colorize(highlightColor);
+                        break;
+                    case SchemeColor.negativeHighlightColor:
+                        curManager.Colorize(negativeHighlightColor);
+                        break;
+                    case SchemeColor.positiveHighlightColor:
+                        curManager.Colorize(positiveHighlightColor);
+                        break;
+                    default:
+                        curManager.Colorize(mainColor);
+                        break;
+                }
         }
     }
-}

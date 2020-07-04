@@ -17,8 +17,8 @@ public class ColorSchemeManager : MonoBehaviour
         currentScheme = colorSchemes[n];
     }
 
-    public void GetColor() {
-        currentScheme.ApplyColorScheme();
+    public void GetColor(ColorManager curManager) {
+        currentScheme.ApplyColorScheme(curManager);
     }
 
 }
