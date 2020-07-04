@@ -88,7 +88,7 @@ MonoBehaviour:
   jumpStartSpeed: 12
   jumpStopSpeed: 2
   gravity: 1
-  isRunningThreshold: 10
+  isRunningThreshold: 1
   intendedMovement: 0
   intendsJumpStart: 0
   intendsJump: 0
@@ -320,7 +320,7 @@ PrefabInstance:
     - target: {fileID: 7380391772519661713, guid: 784cdfabb99ffe6429667c58a03ed0fe,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.03999996
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7380391772519661713, guid: 784cdfabb99ffe6429667c58a03ed0fe,
         type: 3}

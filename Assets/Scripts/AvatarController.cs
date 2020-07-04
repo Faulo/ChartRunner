@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 public class AvatarController : MonoBehaviour {
+    public event Action<GameObject> onJump;
+
     [Header("MonoBehaviour configuration")]
     [SerializeField, Expandable]
     Rigidbody2D attachedRigidbody = default;
@@ -98,8 +100,8 @@ public class AvatarController : MonoBehaviour {
                     intendsJumpStart = false;
                     newState = AvatarState.Jumping;
                     velocity.y = Mathf.Max(velocity.y, jumpStartSpeed);
-
                     commands.Add(new FloatStatisticCommand(FloatStatistic.Jumps, 1));
+                    onJump?.Invoke(gameObject);
                 }
             }
 
