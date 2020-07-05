@@ -100,7 +100,8 @@ EdgeCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
-  m_Points: []
+  m_Points:
+  - {x: 0, y: 0}
 --- !u!114 &5671590889399095729
 MonoBehaviour:
   m_ObjectHideFlags: 0

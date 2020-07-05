@@ -3,4 +3,6 @@
     Jumping,
     Falling,
     Rolling,
+    FirstFrame,
+    Dead,
 }
