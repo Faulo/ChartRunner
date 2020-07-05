@@ -1192,7 +1192,7 @@ MonoBehaviour:
   buttonRight: {fileID: 1210997596003140664}
   buttonRoll: {fileID: 8513776730217868549}
   buttonRewind: {fileID: 8730842000222884843}
-  buttonJump: {fileID: 7543459303372716102}
+  buttonJump: {fileID: 59579912219070381}
 --- !u!114 &5926747149925663395
 MonoBehaviour:
   m_ObjectHideFlags: 0
