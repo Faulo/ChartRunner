@@ -2,4 +2,5 @@
     Grounded,
     Jumping,
     Falling,
+    Rolling,
 }

@@ -109,6 +109,10 @@ MonoBehaviour:
   breakDecelerationDuration: 0.01
   jumpStartSpeed: 12
   jumpStopSpeed: 2
+  rollStartSpeedX: 12
+  rollStartSpeedY: 4
+  rollDuration: 0.25
+  rollDrag: 0.75
   gravity: 1
   isRunningThreshold: 1
   onJump:
@@ -136,6 +140,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onRoll:
+    m_PersistentCalls:
+      m_Calls: []
   onEnterGround:
     m_PersistentCalls:
       m_Calls:
