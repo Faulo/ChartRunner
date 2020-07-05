@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3271c453ee2b63047b09cc1f39f7eca9, type: 3}
+  m_Name: Instantiate_JumpingParticles
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1093588046311969223, guid: 93a7966a9a0ae06448d34a884638f71f, type: 3}
+  parentToContext: 0

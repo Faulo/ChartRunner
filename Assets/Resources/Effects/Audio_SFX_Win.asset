@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af1685f550bd2bc4e8c4ec318a097396, type: 3}
+  m_Name: Audio_SFX_Win
+  m_EditorClassIdentifier: 
+  audio:
+    clip: {fileID: 8300000, guid: c3c9124a5cd941843a3bafb9e9040beb, type: 3}
+    clipReversed: {fileID: 8300000, guid: 1c397177903407c47b2789537d4b5f2b, type: 3}
+    loop: 0
+    mixer: {fileID: 4063977455829503812, guid: 5b5f602883af3c84b84abbdf16d3169a, type: 2}
+    pitch: 1
