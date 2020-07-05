@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GraphCollisions : MonoBehaviour {
     [SerializeField]
     GameObjectEvent onSolidCollisionEnter = default;
     [SerializeField]
     GameObjectEvent onIntangibleCollisionEnter = default;
-    [SerializeField]
-    GameObjectEvent onDeahtZoneCollisionEnter = default;
+    [SerializeField, FormerlySerializedAs("onDeahtZoneCollisionEnter")]
+    GameObjectEvent onDeathZoneCollisionEnter = default;
 
     void CollisionEnter(GameObject other) {
         if (other.TryGetComponent<GraphCollider>(out var collider)) {
@@ -18,7 +19,7 @@ public class GraphCollisions : MonoBehaviour {
                     onIntangibleCollisionEnter.Invoke(gameObject);
                     break;
                 case GraphCollisionMode.DeathZone:
-                    onDeahtZoneCollisionEnter.Invoke(gameObject);
+                    onDeathZoneCollisionEnter.Invoke(gameObject);
                     break;
             }
         }

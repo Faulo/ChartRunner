@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: LoadScene_Daniel
   m_EditorClassIdentifier: 
   scene: DanielTest
+  delay: 1

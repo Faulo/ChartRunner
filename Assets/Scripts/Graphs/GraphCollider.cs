@@ -15,9 +15,8 @@ public class GraphCollider : MonoBehaviour {
         parent = GetComponentInParent<IGraphComponent>();
         Assert.IsNotNull(parent);
 
-        if (!attachedCollider) {
-            attachedCollider = GetComponent<BoxCollider2D>();
-        }
+        OnValidate();
+
         if (attachedCollider) {
             switch (collisionMode) {
                 case GraphCollisionMode.Solid:
@@ -32,6 +31,12 @@ public class GraphCollider : MonoBehaviour {
                     attachedCollider.isTrigger = true;
                     break;
             }
+        }
+    }
+
+    void OnValidate() {
+        if (!attachedCollider) {
+            attachedCollider = GetComponent<Collider2D>();
         }
     }
 }

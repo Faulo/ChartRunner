@@ -8,7 +8,7 @@ using UnityEngine.Assertions;
 public class AvatarController : MonoBehaviour {
     [Header("MonoBehaviour configuration")]
     [SerializeField, Expandable]
-    Rigidbody2D attachedRigidbody = default;
+    public Rigidbody2D attachedRigidbody = default;
     [Header("Grounded Check")]
     [SerializeField, Expandable]
     Transform groundCheck = default;
@@ -194,5 +194,11 @@ public class AvatarController : MonoBehaviour {
     void OnDrawGizmos() {
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(groundCheck.position, new Vector3(groundCheckSize.x, groundCheckSize.y, 0));
+    }
+
+    void OnTriggerEnter2D(Collider2D collider) {
+        if (collider.attachedRigidbody && collider.attachedRigidbody.TryGetComponent<IInteractable>(out var interact)) {
+            interact.Interact();
+        }
     }
 }
