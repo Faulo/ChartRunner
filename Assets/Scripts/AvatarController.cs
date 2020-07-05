@@ -56,6 +56,11 @@ public class AvatarController : MonoBehaviour {
     float acceleration = 0;
     float rollTimer = 0;
     public float facing { get; private set; } = 1;
+    public float runFacing {
+        get {
+            return facing * (isSprinting ? 2 : 1);
+        }
+    }
 
     [Header("Events")]
     [SerializeField]
@@ -91,6 +96,7 @@ public class AvatarController : MonoBehaviour {
     public bool isGrounded => state == AvatarState.Grounded;
     public bool isJumping => state == AvatarState.Jumping;
     public bool isRunning => isGrounded && Mathf.Abs(attachedRigidbody.velocity.x) > isRunningThreshold;
+    public bool isSprinting => isGrounded && Mathf.Abs(attachedRigidbody.velocity.x) > movementSpeed;
     public bool isRolling => state == AvatarState.Rolling;
 
     Vector3 previousPosition;
