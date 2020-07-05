@@ -285,7 +285,7 @@ ScriptedImporter:
     parts: []
     dimension: {x: 0, y: 0}
     characterGroups: []
-  generateGOHierarchy: 0
+  generateGOHierarchy: 1
   textureAssetName: Sheet100 Texture
   prefabAssetName: Sheet100 Prefab
   spriteLibAssetName: Sheet100 Sprite Lib
