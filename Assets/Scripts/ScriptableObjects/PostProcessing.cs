@@ -19,7 +19,6 @@ public class PostProcessing : ScriptableObject {
 
     public void MotionBlur() {
         PostProcessingManager.instance.ChangeMotionBlur(motionBlur);
-
     }
 
     public void Bloom() {
