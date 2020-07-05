@@ -19,11 +19,11 @@ public class Audio : MonoBehaviour {
                 playsForwardCache = value;
                 foreach (var (forward, backward) in sources) {
                     if (value) {
-                        forward.time = forward.clip.length - backward.time;
+                        forward.time = Mathf.Clamp(forward.clip.length - backward.time, 0, forward.clip.length - 0.0001f);
                         backward.Stop();
                         forward.Play();
                     } else {
-                        backward.time = backward.clip.length - forward.time;
+                        backward.time = Mathf.Clamp(backward.clip.length - forward.time, 0, backward.clip.length - 0.0001f);
                         forward.Stop();
                         backward.Play();
                     }
@@ -63,14 +63,12 @@ public class Audio : MonoBehaviour {
         forward.clip = audio.clip;
         forward.outputAudioMixerGroup = audio.mixer;
         forward.pitch = audio.pitch;
-        forward.time = audio.timeOffset;
 
         var backward = Instantiate(sourcePrefab, transform);
         backward.loop = audio.loop;
         backward.clip = audio.clipReversed;
         backward.outputAudioMixerGroup = audio.mixer;
         backward.pitch = Rewind.instance.rewindSpeed * audio.pitch;
-        backward.time = 1 - audio.timeOffset;
 
         if (playsForward) {
             forward.Play();

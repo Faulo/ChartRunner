@@ -50,7 +50,7 @@ MonoBehaviour:
   scale: 1
   width: 1
   scalingDuration: 0.05
-  attachedCollider: {fileID: 445121418123036102}
+  header: {fileID: 4071923871688218008, guid: a208f5707b15e4d4b93b5e3895adf052, type: 3}
 --- !u!1 &5154279193739127025
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 073721c56f327484ca2531e63b467c20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attachedCollider: {fileID: 0}
 --- !u!1 &6338803454518449515
 GameObject:
   m_ObjectHideFlags: 0

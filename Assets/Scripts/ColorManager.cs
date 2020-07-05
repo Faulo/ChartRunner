@@ -1,21 +1,54 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Slothsoft.UnityExtensions;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class ColorManager : MonoBehaviour
-{
-    public SchemeColor color = default;
+public class ColorManager : MonoBehaviour {
+    [SerializeField, FormerlySerializedAs("color")]
+    SchemeColor schemeColor = default;
+    [SerializeField, Expandable]
+    SpriteRenderer spriteRenderer = default;
+    [SerializeField, Expandable]
+    LineRenderer lineRenderer = default;
+    [SerializeField, Expandable]
+    ParticleSystem particles = default;
+    [SerializeField, Expandable]
+    TextMeshProUGUI textMesh = default;
 
     public void Start() {
-        ColorSchemeManager.instance.GetColor();
+        UpdateColors();
     }
 
-    public void Colorize(Color newColor) {
-        if(this.gameObject.GetComponent<LineRenderer>()) {
-            this.gameObject.GetComponent<LineRenderer>().startColor = newColor;
-            this.gameObject.GetComponent<LineRenderer>().endColor = newColor;
-        } else {
-            this.gameObject.GetComponent<SpriteRenderer>().color = newColor;
+    void OnValidate() {
+        if (!spriteRenderer) {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+        if (!lineRenderer) {
+            lineRenderer = GetComponent<LineRenderer>();
+        }
+        if (!particles) {
+            particles = GetComponent<ParticleSystem>();
+        }
+        if (!textMesh) {
+            textMesh = GetComponent<TextMeshProUGUI>();
+        }
+    }
+
+    void UpdateColors() {
+        var color = ColorSchemeManager.instance.GetColor(schemeColor);
+        if (spriteRenderer) {
+            spriteRenderer.color = color;
+        }
+        if (lineRenderer) {
+            lineRenderer.startColor = color;
+            lineRenderer.endColor = color;
+        }
+        if (particles) {
+            var main = particles.main;
+            main.startColor = color;
+        }
+        if (textMesh) {
+            textMesh.color = color;
         }
     }
 }

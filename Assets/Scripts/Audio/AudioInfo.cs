@@ -15,6 +15,4 @@ public class AudioInfo {
     public AudioMixerGroup mixer = default;
     [SerializeField, Range(0, 10)]
     public float pitch = 1;
-    [SerializeField, Range(0, 60)]
-    public float timeOffset = 0;
 }
