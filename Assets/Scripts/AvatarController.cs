@@ -6,11 +6,15 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 public class AvatarController : MonoBehaviour {
+    public static AvatarController instance;
+
     [Header("MonoBehaviour configuration")]
     [SerializeField, Expandable]
     public Rigidbody2D attachedRigidbody = default;
 
     [Header("Ground Movement")]
+    [SerializeField, Range(0, 5)]
+    float defaultDrag = 0;
     [SerializeField, Range(0, 20)]
     float movementSpeed = 10;
     [SerializeField, Range(1, 5)]
@@ -76,10 +80,11 @@ public class AvatarController : MonoBehaviour {
 
     [Header("Input")]
     public float intendedMovement;
-    public bool intendsJumpStart;
     public bool intendsJump;
+    public bool intendsJumpStart;
     public bool intendsRewind;
     public bool intendsRun;
+    public bool intendsRoll;
     public bool intendsRollStart;
     public bool isComatose;
 
@@ -100,6 +105,10 @@ public class AvatarController : MonoBehaviour {
     public bool isRolling => state == AvatarState.Rolling;
 
     Vector3 previousPosition;
+
+    void Awake() {
+        instance = this;
+    }
 
     void Start() {
         Statistics.instance.AddCalculator(FloatStatistic.CurrentX, () => attachedRigidbody.position.x);
@@ -132,6 +141,7 @@ public class AvatarController : MonoBehaviour {
 
     void CollectCommands(ICollection<IUndoable> commands) {
         if (isComatose) {
+            attachedRigidbody.velocity = Vector2.zero;
             return;
         }
         var oldSnapshot = RecordSnapshot();
@@ -154,7 +164,7 @@ public class AvatarController : MonoBehaviour {
                 snapshot.drag = rollDrag;
                 snapshot.rollTimer = rollTimer - Time.deltaTime;
             } else {
-                snapshot.drag = 0;
+                snapshot.drag = defaultDrag;
 
                 if (Math.Sign(targetSpeed) != Math.Sign(velocity.x)) {
                     // instant break if direction changes
