@@ -8,7 +8,7 @@ using UnityEngine.Assertions;
 public class AvatarController : MonoBehaviour {
     [Header("MonoBehaviour configuration")]
     [SerializeField, Expandable]
-    Rigidbody2D attachedRigidbody = default;
+    public Rigidbody2D attachedRigidbody = default;
     [Header("Grounded Check")]
     [SerializeField, Expandable]
     Transform groundCheck = default;
@@ -20,8 +20,14 @@ public class AvatarController : MonoBehaviour {
     [Header("Movement")]
     [SerializeField, Range(0, 20)]
     float movementSpeed = 10;
+    [SerializeField, Range(1, 5)]
+    float runMultiplier = 2;
     [SerializeField, Range(0, 2)]
-    float accelerationDuration = 1;
+    float walkAccelerationDuration = 1;
+    [SerializeField, Range(0, 2)]
+    float runAccelerationDuration = 1;
+    [SerializeField, Range(0, 2)]
+    float breakDecelerationDuration = 1;
     [SerializeField, Range(0, 20)]
     float jumpStartSpeed = 10;
     [SerializeField, Range(0, 20)]
@@ -48,6 +54,8 @@ public class AvatarController : MonoBehaviour {
     public bool intendsJumpStart;
     public bool intendsJump;
     public bool intendsRewind;
+    public bool intendsRun;
+    public bool intendsRollStart;
 
     AvatarState state {
         get => stateCache;
@@ -105,7 +113,22 @@ public class AvatarController : MonoBehaviour {
             velocity.x = 0;
             acceleration = 0;
         }
+
+        bool isAccelerating = Math.Abs(velocity.x) < Math.Abs(targetSpeed);
+        float accelerationDuration = 0;
+        if (intendsRun) {
+            accelerationDuration = isAccelerating
+                ? walkAccelerationDuration
+                : runAccelerationDuration;
+            targetSpeed *= runMultiplier;
+        } else {
+            accelerationDuration = isAccelerating
+                ? walkAccelerationDuration
+                : breakDecelerationDuration;
+        }
+
         velocity.x = Mathf.SmoothDamp(velocity.x, targetSpeed, ref acceleration, accelerationDuration);
+
         velocity += Physics2D.gravity * gravity * Time.deltaTime;
         if (newState == AvatarState.Jumping) {
             if (!intendsJump || velocity.y < jumpStopSpeed) {
@@ -194,5 +217,11 @@ public class AvatarController : MonoBehaviour {
     void OnDrawGizmos() {
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(groundCheck.position, new Vector3(groundCheckSize.x, groundCheckSize.y, 0));
+    }
+
+    void OnTriggerEnter2D(Collider2D collider) {
+        if (collider.attachedRigidbody && collider.attachedRigidbody.TryGetComponent<IInteractable>(out var interact)) {
+            interact.Interact();
+        }
     }
 }

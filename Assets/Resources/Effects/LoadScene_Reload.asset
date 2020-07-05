@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: LoadScene_Reload
   m_EditorClassIdentifier: 
   scene: 
+  delay: 1
+  reloadCurrentLevel: 1
+  loadNextLevel: 0

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: LoadScene_Linus
   m_EditorClassIdentifier: 
   scene: LinusTest
+  delay: 1
