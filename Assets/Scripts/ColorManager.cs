@@ -6,6 +6,8 @@ using UnityEngine.Serialization;
 public class ColorManager : MonoBehaviour {
     [SerializeField, FormerlySerializedAs("color")]
     SchemeColor schemeColor = default;
+    [SerializeField, Range(0, 1)]
+    float transparence = 1;
     [SerializeField, Expandable]
     SpriteRenderer spriteRenderer = default;
     [SerializeField, Expandable]
@@ -37,18 +39,18 @@ public class ColorManager : MonoBehaviour {
     void UpdateColors() {
         var color = ColorSchemeManager.instance.GetColor(schemeColor);
         if (spriteRenderer) {
-            spriteRenderer.color = color;
+            spriteRenderer.color = new Color(color.r, color.g, color.b, transparence);
         }
         if (lineRenderer) {
-            lineRenderer.startColor = color;
-            lineRenderer.endColor = color;
+            lineRenderer.startColor = new Color(color.r, color.g, color.b, transparence);
+            lineRenderer.endColor = new Color(color.r, color.g, color.b, transparence);
         }
         if (particles) {
             var main = particles.main;
-            main.startColor = color;
+            main.startColor = new Color(color.r, color.g, color.b, transparence);
         }
         if (textMesh) {
-            textMesh.color = color;
+            textMesh.color = new Color(color.r, color.g, color.b, transparence);
         }
     }
 }
