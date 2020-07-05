@@ -102,8 +102,11 @@ MonoBehaviour:
   groundCheckLayers:
     serializedVersion: 2
     m_Bits: 1536
-  movementSpeed: 15
-  accelerationDuration: 0.08
+  movementSpeed: 10
+  runMultiplier: 3
+  walkAccelerationDuration: 0.04
+  runAccelerationDuration: 0.12
+  breakDecelerationDuration: 0.01
   jumpStartSpeed: 12
   jumpStopSpeed: 2
   gravity: 1
@@ -176,6 +179,8 @@ MonoBehaviour:
   intendsJumpStart: 0
   intendsJump: 0
   intendsRewind: 0
+  intendsRun: 0
+  intendsRollStart: 0
   stateCache: 0
 --- !u!50 &3321831704091631758
 Rigidbody2D:
@@ -229,7 +234,7 @@ MonoBehaviour:
   onIntangibleCollisionEnter:
     m_PersistentCalls:
       m_Calls: []
-  onDeahtZoneCollisionEnter:
+  onDeathZoneCollisionEnter:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: 1c291a4af8e5a55439f8292e1274ec7c, type: 2}
@@ -371,7 +376,7 @@ MonoBehaviour:
   onIntangibleCollisionEnter:
     m_PersistentCalls:
       m_Calls: []
-  onDeahtZoneCollisionEnter:
+  onDeathZoneCollisionEnter:
     m_PersistentCalls:
       m_Calls: []
 --- !u!58 &4155888788256048307
@@ -430,7 +435,7 @@ MonoBehaviour:
   onIntangibleCollisionEnter:
     m_PersistentCalls:
       m_Calls: []
-  onDeahtZoneCollisionEnter:
+  onDeathZoneCollisionEnter:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1001 &628730473364346139
