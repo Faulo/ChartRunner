@@ -41,18 +41,20 @@ public class GraphCollisions : MonoBehaviour {
                 }
             }
             triggeredColliders = new HashSet<GraphCollider>();
-        }
-        //failsafe!
-        if (transform.position.y < deathZoneY) {
-            commands.Add(new EventCommand(gameObject, onDeathZoneCollisionEnter));
-            commands.Add(new LambdaCommand(Enable, Disable));
+            //failsafe!
+            if (transform.position.y < deathZoneY) {
+                commands.Add(new EventCommand(gameObject, onDeathZoneCollisionEnter));
+                commands.Add(new LambdaCommand(Disable, Enable));
+            }
         }
     }
     void Enable() {
         Rewind.instance.onCollectCommands += CollectCommands;
+        triggerTimer = 0;
     }
     void Disable() {
         Rewind.instance.onCollectCommands -= CollectCommands;
+        triggerTimer = float.PositiveInfinity;
     }
 
     void CollisionEnter(GameObject other) {

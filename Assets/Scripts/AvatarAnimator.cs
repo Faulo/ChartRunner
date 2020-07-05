@@ -10,6 +10,7 @@ public class AvatarAnimator : MonoBehaviour {
         IsGrounded,
         FaceDirection,
         StartRoll,
+        IsDead,
     }
     [SerializeField, Expandable]
     AvatarController observedAvatar = default;
@@ -32,5 +33,6 @@ public class AvatarAnimator : MonoBehaviour {
         observedAnimator.SetBool(nameof(Parameter.IsJumping), observedAvatar.isJumping);
         observedAnimator.SetBool(nameof(Parameter.IsGrounded), observedAvatar.isGrounded);
         observedAnimator.SetFloat(nameof(Parameter.FaceDirection), observedAvatar.runFacing);
+        observedAnimator.SetBool(nameof(Parameter.IsDead), observedAvatar.isComatose);
     }
 }

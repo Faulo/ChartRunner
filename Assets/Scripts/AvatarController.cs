@@ -13,6 +13,8 @@ public class AvatarController : MonoBehaviour {
     public Rigidbody2D attachedRigidbody = default;
 
     [Header("Ground Movement")]
+    [SerializeField, Range(0, 5)]
+    float defaultDrag = 0;
     [SerializeField, Range(0, 20)]
     float movementSpeed = 10;
     [SerializeField, Range(1, 5)]
@@ -139,6 +141,7 @@ public class AvatarController : MonoBehaviour {
 
     void CollectCommands(ICollection<IUndoable> commands) {
         if (isComatose) {
+            attachedRigidbody.velocity = Vector2.zero;
             return;
         }
         var oldSnapshot = RecordSnapshot();
@@ -161,7 +164,7 @@ public class AvatarController : MonoBehaviour {
                 snapshot.drag = rollDrag;
                 snapshot.rollTimer = rollTimer - Time.deltaTime;
             } else {
-                snapshot.drag = 0;
+                snapshot.drag = defaultDrag;
 
                 if (Math.Sign(targetSpeed) != Math.Sign(velocity.x)) {
                     // instant break if direction changes
