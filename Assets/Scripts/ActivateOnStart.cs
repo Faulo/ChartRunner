@@ -15,7 +15,7 @@ public class ActivateOnStart : MonoBehaviour
     private void Start() {
         if (spriteRenderer) {
             float n = Random.Range(0f, 1f);
-            Debug.Log(n);
+            //Debug.Log(n);
             if(n > 0.5f) {
                 spriteRenderer.enabled = true;
             }

@@ -130,6 +130,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 97e03c4dd9497494fa9b5c645faac98a, type: 2}
+        m_MethodName: ChromaticAberration
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!50 &228144865993579191
 Rigidbody2D:
   serializedVersion: 4
@@ -161,6 +172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4828421999070939869}
   - component: {fileID: 4828421999070939870}
+  - component: {fileID: 1545344375}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -232,6 +244,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1545344375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4828421999070939868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3cf8798bfd55624d84373e97b5d4491, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  schemeColor: 4
+  transparence: 1
+  spriteRenderer: {fileID: 4828421999070939870}
+  lineRenderer: {fileID: 0}
+  particles: {fileID: 0}
+  textMesh: {fileID: 0}
 --- !u!1001 &4476563277801350299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -298,6 +328,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015628853384563809, guid: 026951d706efb2b439164798303eefdd,
+        type: 3}
+      propertyPath: m_Parameters.m_GravityCurve.scalar
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 026951d706efb2b439164798303eefdd, type: 3}
