@@ -177,7 +177,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3cf8798bfd55624d84373e97b5d4491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: 0
+  schemeColor: 0
+  transparence: 1
+  spriteRenderer: {fileID: 8649182544994081607}
+  lineRenderer: {fileID: 0}
+  particles: {fileID: 0}
+  textMesh: {fileID: 0}
 --- !u!1 &1310192842926234656
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,8 +282,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 4335075107667846004}
   m_Bounds:
-    m_Center: {x: 0.83500004, y: 1.3419234, z: 0}
-    m_Extent: {x: 0.15833336, y: 0.12141001, z: 0}
+    m_Center: {x: 0.000000029802322, y: 0.00025665015, z: 0}
+    m_Extent: {x: 0.15833336, y: 0.12141003, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &1417948909827088886
@@ -411,8 +416,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 4335075107667846004}
   m_Bounds:
-    m_Center: {x: 1.0016667, y: 1.26, z: 0}
-    m_Extent: {x: 0.038333327, y: 0.01666665, z: 0}
+    m_Center: {x: 0.000000029802322, y: 0.000000059604645, z: 0}
+    m_Extent: {x: 0.038333338, y: 0.016666673, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &1795594080578213135
@@ -591,7 +596,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3cf8798bfd55624d84373e97b5d4491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: 0
+  schemeColor: 0
+  transparence: 1
+  spriteRenderer: {fileID: 3734326352432013631}
+  lineRenderer: {fileID: 0}
+  particles: {fileID: 0}
+  textMesh: {fileID: 0}
 --- !u!1 &3159993597010135511
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,7 +619,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8206275093619386145
 Transform:
   m_ObjectHideFlags: 0
@@ -692,8 +702,8 @@ MonoBehaviour:
   - {fileID: 7599750785353910404}
   - {fileID: 1080868094740625757}
   m_Bounds:
-    m_Center: {x: 0.48666683, y: 1.4213834, z: 0}
-    m_Extent: {x: 0.16333327, y: 0.2476666, z: 0}
+    m_Center: {x: 0.000000074505806, y: -0.00028328598, z: 0}
+    m_Extent: {x: 0.16333324, y: 0.24766661, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &3770035871106972369
@@ -795,8 +805,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 4335075107667846004}
   m_Bounds:
-    m_Center: {x: 0.96000004, y: 1.3169632, z: 0}
-    m_Extent: {x: 0.03666666, y: 0.1030367, z: 0}
+    m_Center: {x: 0.000000048428774, y: 0.00029662251, z: 0}
+    m_Extent: {x: 0.036666676, y: 0.10303669, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &4880920105907001128
@@ -1851,7 +1861,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3cf8798bfd55624d84373e97b5d4491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: 0
+  schemeColor: 0
+  transparence: 1
+  spriteRenderer: {fileID: 1045122045111221666}
+  lineRenderer: {fileID: 0}
+  particles: {fileID: 0}
+  textMesh: {fileID: 0}
 --- !u!1 &9132615088869030972
 GameObject:
   m_ObjectHideFlags: 0

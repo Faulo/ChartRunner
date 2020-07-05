@@ -4,7 +4,7 @@
 public class ColorScheme : ScriptableObject {
     public Color mainColor = default;
     public Color backgroundColor = default;
-    public Color foregroundColor = default;
+    public Color effectColor = default;
     public Color highlightColor = default;
     public Color negativeHighlightColor = default;
     public Color positiveHighlightColor = default;

@@ -688,6 +688,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82982fc31573a75469bb253c3db3c3fc, type: 3}
+--- !u!1 &1590962750 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2549950430118681804, guid: 1e4130dae879e624ca2567725d8ade23,
+    type: 3}
+  m_PrefabInstance: {fileID: 3321831705042683737}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1590962753 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4912108490044266478, guid: 1e4130dae879e624ca2567725d8ade23,
+    type: 3}
+  m_PrefabInstance: {fileID: 3321831705042683737}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1590962754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590962750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3cf8798bfd55624d84373e97b5d4491, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  schemeColor: 0
+  transparence: 1
+  spriteRenderer: {fileID: 1590962753}
+  lineRenderer: {fileID: 0}
+  particles: {fileID: 0}
+  textMesh: {fileID: 0}
 --- !u!114 &1653800020 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4494947726684015808, guid: f6f6275be0a44e842a498f062ed134a6,
@@ -994,6 +1024,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.18118277
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549950430118681804, guid: 1e4130dae879e624ca2567725d8ade23,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2871663605678808582, guid: 1e4130dae879e624ca2567725d8ade23,
         type: 3}
