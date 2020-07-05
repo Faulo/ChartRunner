@@ -6,12 +6,9 @@ using UnityEngine;
 
 public class Statistics2Sheet : MonoBehaviour {
     [SerializeField, Expandable]
-    TextMeshProUGUI textMesh = default;
-
+    List<TextMeshProUGUI> names = default;
     [SerializeField, Expandable]
-    List<TextMeshProUGUI> names;
-    [SerializeField, Expandable]
-    List<TextMeshProUGUI> values;
+    List<TextMeshProUGUI> values = default;
 
     Dictionary<string, string> namevaluepairs = new Dictionary<string, string>();
 
@@ -48,14 +45,6 @@ public class Statistics2Sheet : MonoBehaviour {
 
     void Update() {
         Split();
-        
-        textMesh.text = Statistics.instance.statusText;
-    }
-
-    void OnValidate() {
-        if (!textMesh) {
-            textMesh = GetComponentInParent<TextMeshProUGUI>();
-        }
     }
 }
 

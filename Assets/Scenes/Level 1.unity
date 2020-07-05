@@ -297,31 +297,6 @@ PrefabInstance:
       propertyPath: orthographic size
       value: 15
       objectReference: {fileID: 0}
-    - target: {fileID: 8981746634401552895, guid: 82982fc31573a75469bb253c3db3c3fc,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -17.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8981746634401552895, guid: 82982fc31573a75469bb253c3db3c3fc,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 8981746634401552895, guid: 82982fc31573a75469bb253c3db3c3fc,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.85647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8981746634401552895, guid: 82982fc31573a75469bb253c3db3c3fc,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.85647
-      objectReference: {fileID: 0}
-    - target: {fileID: 8981746634401552895, guid: 82982fc31573a75469bb253c3db3c3fc,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.85647
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2755530633176536977, guid: 82982fc31573a75469bb253c3db3c3fc, type: 3}
     - {fileID: 2755530633176536990, guid: 82982fc31573a75469bb253c3db3c3fc, type: 3}
@@ -1537,6 +1512,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 9200905423783884785, guid: e4a2b195c87333746bde1fb3cdf12860,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9200905424804073032, guid: e4a2b195c87333746bde1fb3cdf12860,
         type: 3}
       propertyPath: m_LocalPosition.x
