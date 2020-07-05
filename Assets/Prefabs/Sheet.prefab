@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   schemeColor: 0
+  transparence: 1
   spriteRenderer: {fileID: 1200220120641935502}
   lineRenderer: {fileID: 0}
   particles: {fileID: 0}
   textMesh: {fileID: 0}
+  image: {fileID: 0}
 --- !u!114 &6916616214482800272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30,10 +32,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   schemeColor: 0
+  transparence: 1
   spriteRenderer: {fileID: 8311196436994333172}
   lineRenderer: {fileID: 0}
   particles: {fileID: 0}
   textMesh: {fileID: 0}
+  image: {fileID: 0}
 --- !u!1 &563002759923464342
 GameObject:
   m_ObjectHideFlags: 0
@@ -84,10 +88,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   schemeColor: 0
+  transparence: 1
   spriteRenderer: {fileID: 731349148190896521}
   lineRenderer: {fileID: 0}
   particles: {fileID: 0}
   textMesh: {fileID: 0}
+  image: {fileID: 0}
 --- !u!1 &1001348828139177702
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,10 +300,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   schemeColor: 0
+  transparence: 1
   spriteRenderer: {fileID: 5491993156643436532}
   lineRenderer: {fileID: 0}
   particles: {fileID: 0}
   textMesh: {fileID: 0}
+  image: {fileID: 0}
 --- !u!1 &1683466871675594135
 GameObject:
   m_ObjectHideFlags: 0
@@ -1284,10 +1292,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   schemeColor: 0
+  transparence: 1
   spriteRenderer: {fileID: 8507152850380382212}
   lineRenderer: {fileID: 0}
   particles: {fileID: 0}
   textMesh: {fileID: 0}
+  image: {fileID: 0}
 --- !u!1 &2360221979317157888
 GameObject:
   m_ObjectHideFlags: 0
@@ -1494,10 +1504,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   schemeColor: 0
+  transparence: 1
   spriteRenderer: {fileID: 319248115564221612}
   lineRenderer: {fileID: 0}
   particles: {fileID: 0}
   textMesh: {fileID: 0}
+  image: {fileID: 0}
 --- !u!1 &2860749224724578902
 GameObject:
   m_ObjectHideFlags: 0
@@ -3498,7 +3510,7 @@ Transform:
   m_GameObject: {fileID: 6916616214631265493}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.941106, y: 8.59, z: 28.592361}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.85647, y: 0.85647, z: 0.85647}
   m_Children:
   - {fileID: 9055068140185452427}
   - {fileID: 6916616215793911104}

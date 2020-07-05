@@ -1100,31 +1100,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1437475966899878512, guid: 29ba904085119784787f7eb85f5dbd24,
-        type: 3}
-      propertyPath: m_text
-      value: "Game by\nDaniel Schulz Maximilian Meinicke Linus G\xE4rtig Ivette Schmidt "
-      objectReference: {fileID: 0}
-    - target: {fileID: 1437475966899878512, guid: 29ba904085119784787f7eb85f5dbd24,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 1437475966899878512, guid: 29ba904085119784787f7eb85f5dbd24,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1437475966899878512, guid: 29ba904085119784787f7eb85f5dbd24,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1437475966899878512, guid: 29ba904085119784787f7eb85f5dbd24,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 1437475966899878514, guid: 29ba904085119784787f7eb85f5dbd24,
         type: 3}
       propertyPath: m_AnchoredPosition.x
