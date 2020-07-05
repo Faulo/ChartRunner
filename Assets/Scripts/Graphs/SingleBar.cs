@@ -15,6 +15,10 @@ public class SingleBar : MonoBehaviour, IGraphComponent {
     public float width = 1;
     [SerializeField, Range(0, 10)]
     float scalingDuration = 1;
+    [SerializeField, Range(-1, 100), Tooltip("Clamp statistic to this value")]
+    float minimumValue = -1;
+    [SerializeField, Range(-1, 100), Tooltip("Clamp statistic to this value")]
+    float maximumValue = -1;
 
     [Header("References")]
     [SerializeField, Expandable]
@@ -33,6 +37,12 @@ public class SingleBar : MonoBehaviour, IGraphComponent {
     }
     void FixedUpdate() {
         floatValue = Statistics.instance.Get(statistic);
+        if (minimumValue != -1 && floatValue < minimumValue) {
+            floatValue = minimumValue;
+        }
+        if (maximumValue != -1 && floatValue > maximumValue) {
+            floatValue = maximumValue;
+        }
     }
     void Start() {
         floatValue = 0;
