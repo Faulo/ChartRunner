@@ -2,13 +2,13 @@
 using System.Collections;
 using UnityEditor;
 
-[CustomEditor(typeof(LineGraph))]
+[CustomEditor(typeof(SingleLineGraph))]
 public class LineGraphEditor : Editor {
     public override void OnInspectorGUI() {
 
         DrawDefaultInspector();
 
-        LineGraph myTarget = (LineGraph)target;
+        SingleLineGraph myTarget = (SingleLineGraph)target;
 
         if (GUILayout.Button("Add Line")) {
             myTarget.AddLine();

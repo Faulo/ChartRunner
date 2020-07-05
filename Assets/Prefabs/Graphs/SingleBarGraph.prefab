@@ -48,10 +48,9 @@ MonoBehaviour:
   barScale: 1
   barWidth: 1
   barDistance: 1
-  margin: 0
-  drawAbscissa: 1
-  drawOrdinate: 1
   ordinateHeight: 1
+  drawAbscissaLabels: 1
+  drawOrdinateLabels: 1
   bars: []
   barPrefab: {fileID: 4494947726684015808, guid: f6f6275be0a44e842a498f062ed134a6,
     type: 3}
@@ -67,7 +66,7 @@ PrefabInstance:
     - target: {fileID: 521599255829557147, guid: 9d0e8ca744d0a4e4298cf3d93dcd2ca2,
         type: 3}
       propertyPath: length
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4029923807922503822, guid: 9d0e8ca744d0a4e4298cf3d93dcd2ca2,
         type: 3}
@@ -97,7 +96,7 @@ PrefabInstance:
     - target: {fileID: 4634362835225037145, guid: 9d0e8ca744d0a4e4298cf3d93dcd2ca2,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d0e8ca744d0a4e4298cf3d93dcd2ca2, type: 3}

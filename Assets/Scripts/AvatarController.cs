@@ -117,7 +117,7 @@ public class AvatarController : MonoBehaviour {
                 intendsJumpStart = false;
                 newState = AvatarState.Jumping;
                 velocity.y = Mathf.Max(velocity.y, jumpStartSpeed);
-                commands.Add(new EventCommand(gameObject, onJump));
+                commands.Add(new EventCommand(groundCheck.gameObject, onJump));
                 commands.Add(new FloatStatisticCommand(FloatStatistic.Jumps, 1));
             }
         }
@@ -150,6 +150,7 @@ public class AvatarController : MonoBehaviour {
         if (snapshot.state != AvatarState.Grounded && oldSnapshot.state == AvatarState.Grounded) {
             commands.Add(new EventCommand(groundCheck.gameObject, onExitGround));
         }
+        commands.Add(new Vector2StatisticCommand(Vector2Statistic.CurrentPosition, snapshot.position));
     }
 
     AvatarSnapshot RecordSnapshot() {
