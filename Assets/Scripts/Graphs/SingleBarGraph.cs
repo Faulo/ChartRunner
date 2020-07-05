@@ -48,7 +48,7 @@ public class SingleBarGraph : MonoBehaviour {
     void UpdateAxes() {
         if (abscissa) {
             abscissa.length = (bars.Length * barWidth) + ((bars.Length - 1) * barDistance) + barDistance;
-            abscissa.labelNames = bars.Select(bar => bar.statistic.ToString()).ToArray();
+            abscissa.labelNames = bars.Select(bar => bar.statistic.Translate()).ToArray();
             abscissa.labelPositions = bars.Select(bar => bar.transform.localPosition.x + (barWidth / 2)).ToArray();
             abscissa.OnValidate();
         }
