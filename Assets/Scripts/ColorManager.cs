@@ -2,6 +2,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class ColorManager : MonoBehaviour {
     [SerializeField, FormerlySerializedAs("color")]
@@ -16,6 +17,8 @@ public class ColorManager : MonoBehaviour {
     ParticleSystem particles = default;
     [SerializeField, Expandable]
     TextMeshProUGUI textMesh = default;
+    [SerializeField, Expandable]
+    Image image = default;
 
     public void Start() {
         UpdateColors();
@@ -34,6 +37,9 @@ public class ColorManager : MonoBehaviour {
         if (!textMesh) {
             textMesh = GetComponent<TextMeshProUGUI>();
         }
+        if (!image) {
+            image = GetComponent<Image>();
+        }
     }
 
     void UpdateColors() {
@@ -51,6 +57,9 @@ public class ColorManager : MonoBehaviour {
         }
         if (textMesh) {
             textMesh.color = new Color(color.r, color.g, color.b, transparence);
+        }
+        if (image) {
+            image.color = new Color(color.r, color.g, color.b, transparence);
         }
     }
 }
