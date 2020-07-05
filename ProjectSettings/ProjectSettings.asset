@@ -264,7 +264,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: b2c7677eb170ba74f8303549818d04a6, type: 3}
+      m_Icon: {fileID: 2800000, guid: 9fb00f9057794994781b552174553777, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
@@ -587,7 +587,9 @@ PlayerSettings:
   platformArchitecture: {}
   scriptingBackend:
     Standalone: 1
-  il2cppCompilerConfiguration: {}
+  il2cppCompilerConfiguration:
+    Standalone: 2
+    WebGL: 2
   managedStrippingLevel: {}
   incrementalIl2cppBuild: {}
   allowUnsafeCode: 0
