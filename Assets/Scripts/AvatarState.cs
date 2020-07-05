@@ -4,4 +4,5 @@
     Falling,
     Rolling,
     FirstFrame,
+    Dead,
 }

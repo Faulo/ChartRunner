@@ -76,6 +76,7 @@ public class AvatarController : MonoBehaviour {
     public bool intendsRewind;
     public bool intendsRun;
     public bool intendsRollStart;
+    public bool isComatose;
 
     AvatarState state {
         get => stateCache;
@@ -93,6 +94,7 @@ public class AvatarController : MonoBehaviour {
     public bool isRolling => state == AvatarState.Rolling;
 
     Vector3 previousPosition;
+
     void Start() {
         Statistics.instance.AddCalculator(FloatStatistic.CurrentX, () => attachedRigidbody.position.x);
         Statistics.instance.AddCalculator(FloatStatistic.CurrentY, () => attachedRigidbody.position.y);
@@ -123,6 +125,9 @@ public class AvatarController : MonoBehaviour {
     }
 
     void CollectCommands(ICollection<IUndoable> commands) {
+        if (isComatose) {
+            return;
+        }
         var oldSnapshot = RecordSnapshot();
         var snapshot = new AvatarSnapshot();
 

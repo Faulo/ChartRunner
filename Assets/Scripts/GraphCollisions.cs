@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Serialization;
 
 public class GraphCollisions : MonoBehaviour {
@@ -14,23 +15,50 @@ public class GraphCollisions : MonoBehaviour {
     float deathZoneY = -1;
 
     float triggerTimer;
-    bool canTrigger => triggerTimer <= 0;
-    void CollisionEnter(GameObject other) {
-        if (!canTrigger) {
-            return;
-        }
-        if (other.TryGetComponent<GraphCollider>(out var collider)) {
+
+    ISet<GraphCollider> triggeredColliders = new HashSet<GraphCollider>();
+
+    void Start() {
+        Enable();
+    }
+
+    void CollectCommands(ICollection<IUndoable> commands) {
+        if (triggerTimer > 0) {
+            triggerTimer -= Time.deltaTime;
+        } else {
             triggerTimer = triggerDuration;
-            switch (collider.collisionMode) {
-                case GraphCollisionMode.Solid:
-                    onSolidCollisionEnter.Invoke(gameObject);
-                    break;
-                case GraphCollisionMode.Intangible:
-                    onIntangibleCollisionEnter.Invoke(gameObject);
-                    break;
-                case GraphCollisionMode.DeathZone:
-                    onDeathZoneCollisionEnter.Invoke(gameObject);
-                    break;
+            foreach (var collider in triggeredColliders) {
+                switch (collider.collisionMode) {
+                    case GraphCollisionMode.Solid:
+                        commands.Add(new EventCommand(gameObject, onSolidCollisionEnter));
+                        break;
+                    case GraphCollisionMode.Intangible:
+                        commands.Add(new EventCommand(gameObject, onIntangibleCollisionEnter));
+                        break;
+                    case GraphCollisionMode.DeathZone:
+                        commands.Add(new EventCommand(gameObject, onDeathZoneCollisionEnter));
+                        break;
+                }
+            }
+            triggeredColliders = new HashSet<GraphCollider>();
+        }
+        //failsafe!
+        if (transform.position.y < deathZoneY) {
+            commands.Add(new EventCommand(gameObject, onDeathZoneCollisionEnter));
+            commands.Add(new LambdaCommand(Enable, Disable));
+        }
+    }
+    void Enable() {
+        Rewind.instance.onCollectCommands += CollectCommands;
+    }
+    void Disable() {
+        Rewind.instance.onCollectCommands -= CollectCommands;
+    }
+
+    void CollisionEnter(GameObject other) {
+        if (other.TryGetComponent<GraphCollider>(out var collider)) {
+            if (!triggeredColliders.Contains(collider)) {
+                triggeredColliders.Add(collider);
             }
         }
     }
@@ -40,16 +68,5 @@ public class GraphCollisions : MonoBehaviour {
     }
     void OnTriggerEnter2D(Collider2D collider) {
         CollisionEnter(collider.gameObject);
-    }
-
-    void FixedUpdate() {
-        if (triggerTimer > 0) {
-            triggerTimer -= Time.deltaTime;
-        }
-        //failsafe!
-        if (transform.position.y < deathZoneY) {
-            onDeathZoneCollisionEnter.Invoke(gameObject);
-            enabled = false;
-        }
     }
 }
