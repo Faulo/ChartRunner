@@ -7,4 +7,5 @@
     GroundedTime,
     AirborneTime,
     Rolls,
+    MaximumSpeed,
 }
