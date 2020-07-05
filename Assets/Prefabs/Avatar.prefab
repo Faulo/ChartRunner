@@ -240,7 +240,7 @@ MonoBehaviour:
   onDeathZoneCollisionEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 1c291a4af8e5a55439f8292e1274ec7c, type: 2}
+      - m_Target: {fileID: 11400000, guid: c44ed341980aba24ba3e4e51d3122f60, type: 2}
         m_MethodName: Invoke
         m_Mode: 0
         m_Arguments:
