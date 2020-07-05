@@ -609,12 +609,12 @@ PrefabInstance:
     - target: {fileID: 2694585588687880550, guid: 82982fc31573a75469bb253c3db3c3fc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0016441345
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2694585588687880550, guid: 82982fc31573a75469bb253c3db3c3fc,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.00878334
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2755530633179429016, guid: 82982fc31573a75469bb253c3db3c3fc,
         type: 3}
@@ -634,7 +634,7 @@ PrefabInstance:
     - target: {fileID: 2755530633179429017, guid: 82982fc31573a75469bb253c3db3c3fc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11
+      value: 12.5
       objectReference: {fileID: 0}
     - target: {fileID: 2755530633179429017, guid: 82982fc31573a75469bb253c3db3c3fc,
         type: 3}
@@ -685,6 +685,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CMCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 3355847903817715087, guid: 82982fc31573a75469bb253c3db3c3fc,
+        type: 3}
+      propertyPath: orthographic size
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82982fc31573a75469bb253c3db3c3fc, type: 3}
@@ -1097,16 +1102,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayButton
-      objectReference: {fileID: 0}
-    - target: {fileID: 7977529631041125857, guid: 7e494f576c294244cba3e18bd8c0e776,
-        type: 3}
-      propertyPath: offset.y
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7977529631041125857, guid: 7e494f576c294244cba3e18bd8c0e776,
-        type: 3}
-      propertyPath: offset.x
-      value: 2.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e494f576c294244cba3e18bd8c0e776, type: 3}
