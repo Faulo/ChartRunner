@@ -16,23 +16,46 @@ public class ButtonLayout : MonoBehaviour
     [SerializeField, Expandable]
     SpriteRenderer buttonJump = default;
 
-    public void PressLeft() {
+    bool moveLeft = false;
+    bool moveRight = false;
 
+    void Update() {
+        if(AvatarController.instance.intendedMovement > 0) {
+            moveRight = true;
+        } else {
+            moveRight = false;
+        }
+        if(AvatarController.instance.intendedMovement < 0) {
+            moveLeft = true;
+        } else {
+            moveLeft = false;
+        }
+
+        PressLeft();
+        PressRewind();
+        PressRight();
+        PressJump();
+        PressRoll();
+    }
+
+    public void PressLeft() {
+        buttonLeft.enabled = moveLeft;
     }
 
     public void PressRight() {
+        buttonRight.enabled = moveRight;
 
     }
 
-    public void PressUp() {
-
+    public void PressJump() {
+        buttonJump.enabled = AvatarController.instance.intendsJump;
     }
 
-    public void PressDown() {
-
+    public void PressRoll() {
+        buttonJump.enabled = AvatarController.instance.intendsRoll;
     }
 
     public void PressRewind() {
-
+        buttonJump.enabled = AvatarController.instance.intendsRewind;
     }
 }
