@@ -24,6 +24,17 @@ public class AvatarInput : MonoBehaviour, Controls.IPlayerActions {
     public void OnRewind(InputAction.CallbackContext context) {
         Rewind.instance.isRewinding = context.performed;
     }
+    public void OnRun(InputAction.CallbackContext context) {
+        avatar.intendsRun = context.performed;
+    }
+    public void OnRoll(InputAction.CallbackContext context) {
+        if (context.started) {
+            avatar.intendsRollStart = true;
+        }
+        if (context.canceled) {
+            avatar.intendsRollStart = false;
+        }
+    }
 
     void Awake() {
         controls = new Controls();
