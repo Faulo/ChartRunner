@@ -68,6 +68,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 0}
   particles: {fileID: 0}
   textMesh: {fileID: 0}
+  image: {fileID: 0}
 --- !u!114 &5824460309791242215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,6 +87,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 0}
   particles: {fileID: 0}
   textMesh: {fileID: 0}
+  image: {fileID: 0}
 --- !u!114 &5824460310313196761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,6 +106,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 0}
   particles: {fileID: 0}
   textMesh: {fileID: 0}
+  image: {fileID: 0}
 --- !u!1 &5824460309059065923
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,6 +172,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 0}
   particles: {fileID: 0}
   textMesh: {fileID: 0}
+  image: {fileID: 0}
 --- !u!1001 &5824460308888465697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -261,6 +265,11 @@ PrefabInstance:
         type: 3}
       propertyPath: offset.y
       value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4494947726684015808, guid: f6f6275be0a44e842a498f062ed134a6,
+        type: 3}
+      propertyPath: maximumValue
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8860725374212016971, guid: f6f6275be0a44e842a498f062ed134a6,
         type: 3}
