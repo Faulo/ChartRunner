@@ -6,4 +6,5 @@
     CurrentSpeed,
     GroundedTime,
     AirborneTime,
+    Rolls,
 }

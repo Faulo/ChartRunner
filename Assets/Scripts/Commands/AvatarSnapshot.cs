@@ -6,10 +6,12 @@ public class AvatarSnapshot {
     public AvatarState state;
     public float acceleration;
     public float facing;
+    public float drag;
+    public float rollTimer;
 
     public override bool Equals(object obj) {
         return obj is AvatarSnapshot other
-            ? position == other.position && velocity == other.velocity && acceleration == other.acceleration && state == other.state && facing == other.facing
+            ? position == other.position && velocity == other.velocity && acceleration == other.acceleration && state == other.state && facing == other.facing && drag == other.drag && rollTimer == rollTimer
             : false;
     }
 
