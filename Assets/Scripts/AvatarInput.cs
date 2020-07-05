@@ -31,6 +31,7 @@ public class AvatarInput : MonoBehaviour, Controls.IPlayerActions {
         if (context.started) {
             avatar.intendsRollStart = true;
         }
+        avatar.intendsRoll = context.performed;
         if (context.canceled) {
             avatar.intendsRollStart = false;
         }

@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 public class AvatarController : MonoBehaviour {
+    public static AvatarController instance;
+
     [Header("MonoBehaviour configuration")]
     [SerializeField, Expandable]
     public Rigidbody2D attachedRigidbody = default;
@@ -76,10 +78,11 @@ public class AvatarController : MonoBehaviour {
 
     [Header("Input")]
     public float intendedMovement;
-    public bool intendsJumpStart;
     public bool intendsJump;
+    public bool intendsJumpStart;
     public bool intendsRewind;
     public bool intendsRun;
+    public bool intendsRoll;
     public bool intendsRollStart;
     public bool isComatose;
 
@@ -100,6 +103,10 @@ public class AvatarController : MonoBehaviour {
     public bool isRolling => state == AvatarState.Rolling;
 
     Vector3 previousPosition;
+
+    void Awake() {
+        instance = this;
+    }
 
     void Start() {
         Statistics.instance.AddCalculator(FloatStatistic.CurrentX, () => attachedRigidbody.position.x);
