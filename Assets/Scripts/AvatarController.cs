@@ -13,6 +13,8 @@ public class AvatarController : MonoBehaviour {
     public Rigidbody2D attachedRigidbody = default;
 
     [Header("Ground Movement")]
+    [SerializeField, Range(0, 5)]
+    float defaultDrag = 0;
     [SerializeField, Range(0, 20)]
     float movementSpeed = 10;
     [SerializeField, Range(1, 5)]
@@ -139,6 +141,7 @@ public class AvatarController : MonoBehaviour {
 
     void CollectCommands(ICollection<IUndoable> commands) {
         if (isComatose) {
+            attachedRigidbody.velocity = Vector2.zero;
             return;
         }
         var oldSnapshot = RecordSnapshot();
@@ -161,7 +164,7 @@ public class AvatarController : MonoBehaviour {
                 snapshot.drag = rollDrag;
                 snapshot.rollTimer = rollTimer - Time.deltaTime;
             } else {
-                snapshot.drag = 0;
+                snapshot.drag = defaultDrag;
 
                 if (Math.Sign(targetSpeed) != Math.Sign(velocity.x)) {
                     // instant break if direction changes
@@ -229,14 +232,27 @@ public class AvatarController : MonoBehaviour {
             commands.Add(new FloatStatisticCommand(FloatStatistic.MaximumSpeed, deltaMaxSpeed));
         }
 
-        commands.Add(new FloatStatisticCommand(FloatStatistic.TimePassed, Time.deltaTime));
         commands.Add(new Vector2StatisticCommand(Vector2Statistic.VelocityOverTime, velocity.magnitude));
         commands.Add(new AvatarCommand(oldSnapshot, snapshot, ApplySnapshot));
 
-        if (snapshot.state == AvatarState.Grounded) {
-            commands.Add(new FloatStatisticCommand(FloatStatistic.GroundedTime, Time.deltaTime));
-        } else {
-            commands.Add(new FloatStatisticCommand(FloatStatistic.AirborneTime, Time.deltaTime));
+        switch (snapshot.state) {
+            case AvatarState.FirstFrame:
+            case AvatarState.Grounded:
+                commands.Add(new FloatStatisticCommand(FloatStatistic.GroundedTime, Time.deltaTime));
+                commands.Add(new FloatStatisticCommand(FloatStatistic.TimePassed, Time.deltaTime));
+                break;
+            case AvatarState.Jumping:
+            case AvatarState.Falling:
+                commands.Add(new FloatStatisticCommand(FloatStatistic.AirborneTime, Time.deltaTime));
+                commands.Add(new FloatStatisticCommand(FloatStatistic.TimePassed, Time.deltaTime));
+                break;
+            case AvatarState.Rolling:
+                commands.Add(new FloatStatisticCommand(FloatStatistic.RollingTime, Time.deltaTime));
+                commands.Add(new FloatStatisticCommand(FloatStatistic.TimePassed, Time.deltaTime));
+                break;
+            case AvatarState.Dead:
+                commands.Add(new FloatStatisticCommand(FloatStatistic.DeadTime, Time.deltaTime));
+                break;
         }
 
         if (snapshot.state == AvatarState.Grounded && oldSnapshot.state != AvatarState.Grounded) {

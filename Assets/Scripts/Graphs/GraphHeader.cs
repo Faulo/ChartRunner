@@ -9,7 +9,7 @@ public class GraphHeader : MonoBehaviour
     public Vector3 offset = Vector3.zero;
 
     public void Start() {
-        ApplyHeader(singleBar.statistic.ToString());
+        ApplyHeader(singleBar.statistic.Translate());
     }
 
     public void ApplyHeader(string newHeader) {

@@ -52,10 +52,10 @@ public class ButtonLayout : MonoBehaviour
     }
 
     public void PressRoll() {
-        buttonJump.enabled = AvatarController.instance.intendsRoll;
+        buttonRoll.enabled = AvatarController.instance.intendsRoll;
     }
 
     public void PressRewind() {
-        buttonJump.enabled = AvatarController.instance.intendsRewind;
+        buttonRewind.enabled = AvatarController.instance.intendsRewind;
     }
 }
