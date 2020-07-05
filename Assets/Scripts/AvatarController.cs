@@ -59,6 +59,8 @@ public class AvatarController : MonoBehaviour {
 
     [Header("Events")]
     [SerializeField]
+    public GameObjectEvent onSpawn = default;
+    [SerializeField]
     public GameObjectEvent onJump = default;
     [SerializeField]
     public GameObjectEvent onRoll = default;
@@ -101,6 +103,8 @@ public class AvatarController : MonoBehaviour {
         Rewind.instance.onCollectCommands += CollectCommands;
         Rewind.instance.onStartRewind += StartRewindListener;
         Rewind.instance.onStopRewind += StopRewindListener;
+
+        state = AvatarState.FirstFrame;
     }
 
 
@@ -131,57 +135,64 @@ public class AvatarController : MonoBehaviour {
 
         velocity += Physics2D.gravity * gravity * Time.deltaTime;
 
-        if (newState == AvatarState.Rolling) {
-            snapshot.drag = rollDrag;
-            snapshot.rollTimer = rollTimer - Time.deltaTime;
+        if (newState == AvatarState.FirstFrame) {
+            newState = AvatarState.Grounded;
+            commands.Add(new EventCommand(gameObject, onSpawn));
         } else {
-            snapshot.drag = 0;
-
-            if (Math.Sign(targetSpeed) != Math.Sign(velocity.x)) {
-                // instant break if direction changes
-                velocity.x = 0;
-                acceleration = 0;
-            }
-
-            bool isAccelerating = Math.Abs(velocity.x) < Math.Abs(targetSpeed);
-            float accelerationDuration = 0;
-            if (intendsRun) {
-                accelerationDuration = isAccelerating
-                    ? walkAccelerationDuration
-                    : runAccelerationDuration;
-                targetSpeed *= runMultiplier;
+            if (newState == AvatarState.Rolling) {
+                snapshot.drag = rollDrag;
+                snapshot.rollTimer = rollTimer - Time.deltaTime;
             } else {
-                accelerationDuration = isAccelerating
-                    ? walkAccelerationDuration
-                    : breakDecelerationDuration;
-            }
+                snapshot.drag = 0;
 
-            velocity.x = Mathf.SmoothDamp(velocity.x, targetSpeed, ref acceleration, accelerationDuration);
-
-            if (newState == AvatarState.Jumping) {
-                if (!intendsJump || velocity.y < jumpStopSpeed) {
-                    newState = AvatarState.Falling;
-                    velocity.y = Mathf.Min(velocity.y, jumpStopSpeed);
+                if (Math.Sign(targetSpeed) != Math.Sign(velocity.x)) {
+                    // instant break if direction changes
+                    velocity.x = 0;
+                    acceleration = 0;
                 }
-            } else {
-                if (intendsJumpStart && newState == AvatarState.Grounded) {
-                    intendsJumpStart = false;
-                    newState = AvatarState.Jumping;
-                    velocity.y = Mathf.Max(velocity.y, jumpStartSpeed);
-                    commands.Add(new EventCommand(groundCheck.gameObject, onJump));
-                    commands.Add(new FloatStatisticCommand(FloatStatistic.Jumps, 1));
-                }
-            }
 
-            if (intendsRollStart) {
-                intendsRollStart = false;
-                newState = AvatarState.Rolling;
-                velocity += new Vector2(facing * rollStartSpeedX, rollStartSpeedY);
-                snapshot.rollTimer = rollDuration;
-                commands.Add(new EventCommand(groundCheck.gameObject, onRoll));
-                commands.Add(new FloatStatisticCommand(FloatStatistic.Rolls, 1));
+                bool isAccelerating = Math.Abs(velocity.x) < Math.Abs(targetSpeed);
+                float accelerationDuration = 0;
+                if (intendsRun) {
+                    accelerationDuration = isAccelerating
+                        ? walkAccelerationDuration
+                        : runAccelerationDuration;
+                    targetSpeed *= runMultiplier;
+                } else {
+                    accelerationDuration = isAccelerating
+                        ? walkAccelerationDuration
+                        : breakDecelerationDuration;
+                }
+
+                velocity.x = Mathf.SmoothDamp(velocity.x, targetSpeed, ref acceleration, accelerationDuration);
+
+                if (newState == AvatarState.Jumping) {
+                    if (!intendsJump || velocity.y < jumpStopSpeed) {
+                        newState = AvatarState.Falling;
+                        velocity.y = Mathf.Min(velocity.y, jumpStopSpeed);
+                    }
+                } else {
+                    if (intendsJumpStart && newState == AvatarState.Grounded) {
+                        intendsJumpStart = false;
+                        newState = AvatarState.Jumping;
+                        velocity.y = Mathf.Max(velocity.y, jumpStartSpeed);
+                        commands.Add(new EventCommand(groundCheck.gameObject, onJump));
+                        commands.Add(new FloatStatisticCommand(FloatStatistic.Jumps, 1));
+                    }
+                }
+
+                if (intendsRollStart) {
+                    intendsRollStart = false;
+                    newState = AvatarState.Rolling;
+                    velocity += new Vector2(facing * rollStartSpeedX, rollStartSpeedY);
+                    snapshot.rollTimer = rollDuration;
+                    commands.Add(new EventCommand(groundCheck.gameObject, onRoll));
+                    commands.Add(new FloatStatisticCommand(FloatStatistic.Rolls, 1));
+                }
             }
         }
+
+
 
         float newFacing = Math.Sign(intendedMovement);
 
@@ -242,6 +253,8 @@ public class AvatarController : MonoBehaviour {
 
     AvatarState CalculateState() {
         switch (state) {
+            case AvatarState.FirstFrame:
+                return AvatarState.FirstFrame;
             case AvatarState.Grounded:
             case AvatarState.Falling:
                 if (Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0, groundCheckLayers)) {

@@ -3,4 +3,5 @@
     Jumping,
     Falling,
     Rolling,
+    FirstFrame,
 }
