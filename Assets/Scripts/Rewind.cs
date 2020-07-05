@@ -15,6 +15,9 @@ public class Rewind : MonoBehaviour {
     public bool isRewinding {
         get => isRewindingCache;
         set {
+            if (value && rewindDisabled) {
+                return;
+            }
             if (isRewindingCache != value) {
                 isRewindingCache = value;
                 if (value) {
@@ -26,6 +29,8 @@ public class Rewind : MonoBehaviour {
         }
     }
     bool isRewindingCache;
+
+    public bool rewindDisabled = false;
 
     [SerializeField, Range(0, 10)]
     public int rewindSpeed = 1;
@@ -54,6 +59,9 @@ public class Rewind : MonoBehaviour {
     }
 
     void FixedUpdate() {
+        if (rewindDisabled) {
+            return;
+        }
         if (isRewinding) {
             Undo();
         } else {

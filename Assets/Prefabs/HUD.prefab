@@ -136,7 +136,7 @@ MonoBehaviour:
   onF1:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 9b03e4f464145ab40b52953331565177, type: 2}
+      - m_Target: {fileID: 11400000, guid: db597358cb1752946bc0030a8de1611e, type: 2}
         m_MethodName: Invoke
         m_Mode: 0
         m_Arguments:
@@ -149,32 +149,10 @@ MonoBehaviour:
         m_CallState: 2
   onF2:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 990d1491f95652841b60e430098fdbd0, type: 2}
-        m_MethodName: Invoke
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onF3:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: bbf493bd48f1f2c44a78f4dc92d21380, type: 2}
-        m_MethodName: Invoke
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onF4:
     m_PersistentCalls:
       m_Calls: []
