@@ -195,6 +195,11 @@ public class AvatarController : MonoBehaviour {
             ? facing
             : newFacing;
 
+        float deltaMaxSpeed = velocity.magnitude - Statistics.instance.Get(FloatStatistic.MaximumSpeed);
+        if (deltaMaxSpeed > 0) {
+            commands.Add(new FloatStatisticCommand(FloatStatistic.MaximumSpeed, deltaMaxSpeed));
+        }
+
         commands.Add(new FloatStatisticCommand(FloatStatistic.TimePassed, Time.deltaTime));
         commands.Add(new Vector2StatisticCommand(Vector2Statistic.VelocityOverTime, velocity.magnitude));
         commands.Add(new AvatarCommand(oldSnapshot, snapshot, ApplySnapshot));
@@ -212,7 +217,6 @@ public class AvatarController : MonoBehaviour {
             commands.Add(new EventCommand(groundCheck.gameObject, onExitGround));
         }
         commands.Add(new Vector2StatisticCommand(Vector2Statistic.CurrentPosition, snapshot.position));
-
     }
 
     AvatarSnapshot RecordSnapshot() {
