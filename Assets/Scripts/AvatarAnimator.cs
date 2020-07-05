@@ -9,7 +9,7 @@ public class AvatarAnimator : MonoBehaviour {
         IsJumping,
         IsGrounded,
         FaceDirection,
-        IsRolling,
+        StartRoll,
     }
     [SerializeField, Expandable]
     AvatarController observedAvatar = default;
@@ -18,6 +18,7 @@ public class AvatarAnimator : MonoBehaviour {
 
     void Start() {
         observedAvatar.onJump.AddListener(data => observedAnimator.SetTrigger(nameof(Parameter.TakeOff)));
+        observedAvatar.onRoll.AddListener(data => observedAnimator.SetTrigger(nameof(Parameter.StartRoll)));
         Rewind.instance.onCollectCommands += CollectCommands;
     }
 
@@ -31,6 +32,5 @@ public class AvatarAnimator : MonoBehaviour {
         observedAnimator.SetBool(nameof(Parameter.IsJumping), observedAvatar.isJumping);
         observedAnimator.SetBool(nameof(Parameter.IsGrounded), observedAvatar.isGrounded);
         observedAnimator.SetFloat(nameof(Parameter.FaceDirection), observedAvatar.facing);
-        //observedAnimator.SetBool(nameof(Parameter.IsRolling), observedAvatar.isRolling);
     }
 }
