@@ -50,7 +50,9 @@ MonoBehaviour:
   scale: 1
   width: 1
   scalingDuration: 0.05
+  spriteRenderer: {fileID: 8860725374212016971}
   header: {fileID: 4071923871688218008, guid: a208f5707b15e4d4b93b5e3895adf052, type: 3}
+  offset: {x: -2.25, y: 2.5, z: 0}
 --- !u!1 &5154279193739127025
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,4 +218,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3cf8798bfd55624d84373e97b5d4491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: 3
+  schemeColor: 3
+  spriteRenderer: {fileID: 8860725374212016971}
+  lineRenderer: {fileID: 0}
+  particles: {fileID: 0}
+  textMesh: {fileID: 0}
