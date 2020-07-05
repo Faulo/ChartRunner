@@ -21,8 +21,8 @@ public class ColorSchemeManager : MonoBehaviour {
         switch (color) {
             case SchemeColor.mainColor:
                 return currentScheme.mainColor;
-            case SchemeColor.foregroundColor:
-                return currentScheme.foregroundColor;
+            case SchemeColor.effectColor:
+                return currentScheme.effectColor;
             case SchemeColor.backgroundColor:
                 return currentScheme.backgroundColor;
             case SchemeColor.highlightColor:
