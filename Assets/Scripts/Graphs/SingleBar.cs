@@ -23,8 +23,10 @@ public class SingleBar : MonoBehaviour, IGraphComponent {
     [Header("References")]
     [SerializeField, Expandable]
     SpriteRenderer spriteRenderer = default;
-    public GameObject header = default;
-    public Vector3 offset = Vector3.zero;
+    [SerializeField, Expandable]
+    RectTransform header = default;
+    [SerializeField]
+    Vector3 offset = Vector3.zero;
 
 
     public float floatValue { get; private set; }
@@ -51,9 +53,9 @@ public class SingleBar : MonoBehaviour, IGraphComponent {
         AddHeader();
     }
     void AddHeader() {
-        var text = Instantiate(header, transform.position, Quaternion.identity);
-        text.GetComponentInChildren<GraphHeader>().singleBar = this;
-        text.GetComponentInChildren<GraphHeader>().offset = offset;
+        var text = Instantiate(header);
+        text.position = transform.position + offset;
+        text.GetComponentInChildren<GraphHeader>().label = statistic.Translate();
     }
     public void OnValidate() {
         floatValue = 1;

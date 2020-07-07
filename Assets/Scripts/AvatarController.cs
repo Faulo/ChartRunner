@@ -232,14 +232,27 @@ public class AvatarController : MonoBehaviour {
             commands.Add(new FloatStatisticCommand(FloatStatistic.MaximumSpeed, deltaMaxSpeed));
         }
 
-        commands.Add(new FloatStatisticCommand(FloatStatistic.TimePassed, Time.deltaTime));
         commands.Add(new Vector2StatisticCommand(Vector2Statistic.VelocityOverTime, velocity.magnitude));
         commands.Add(new AvatarCommand(oldSnapshot, snapshot, ApplySnapshot));
 
-        if (snapshot.state == AvatarState.Grounded) {
-            commands.Add(new FloatStatisticCommand(FloatStatistic.GroundedTime, Time.deltaTime));
-        } else {
-            commands.Add(new FloatStatisticCommand(FloatStatistic.AirborneTime, Time.deltaTime));
+        switch (snapshot.state) {
+            case AvatarState.FirstFrame:
+            case AvatarState.Grounded:
+                commands.Add(new FloatStatisticCommand(FloatStatistic.GroundedTime, Time.deltaTime));
+                commands.Add(new FloatStatisticCommand(FloatStatistic.TimePassed, Time.deltaTime));
+                break;
+            case AvatarState.Jumping:
+            case AvatarState.Falling:
+                commands.Add(new FloatStatisticCommand(FloatStatistic.AirborneTime, Time.deltaTime));
+                commands.Add(new FloatStatisticCommand(FloatStatistic.TimePassed, Time.deltaTime));
+                break;
+            case AvatarState.Rolling:
+                commands.Add(new FloatStatisticCommand(FloatStatistic.RollingTime, Time.deltaTime));
+                commands.Add(new FloatStatisticCommand(FloatStatistic.TimePassed, Time.deltaTime));
+                break;
+            case AvatarState.Dead:
+                commands.Add(new FloatStatisticCommand(FloatStatistic.DeadTime, Time.deltaTime));
+                break;
         }
 
         if (snapshot.state == AvatarState.Grounded && oldSnapshot.state != AvatarState.Grounded) {

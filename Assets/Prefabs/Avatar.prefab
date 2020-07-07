@@ -77,7 +77,7 @@ MonoBehaviour:
   jumpStopSpeed: 2
   rollStartSpeedX: 12
   rollStartSpeedY: 4
-  rollDuration: 0.25
+  rollDuration: 0.5
   rollDrag: 0.75
   gravity: 1
   isRunningThreshold: 1
