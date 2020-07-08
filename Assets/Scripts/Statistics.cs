@@ -48,20 +48,23 @@ public class Statistics : MonoBehaviour {
         builder.AppendLine();
         //*/
 
-        builder.AppendLine(nameof(floatStatistics));
+        //builder.AppendLine(nameof(floatStatistics));
         foreach (var pair in floatStatistics) {
             builder.AppendLine($"{pair.Key}: {pair.Value}");
         }
         builder.AppendLine();
 
-        builder.AppendLine(nameof(dictionaryStatistics));
+        //Still in use, but breaks Statistics2Sheet
+        /* 
+        //builder.AppendLine(nameof(dictionaryStatistics));
         foreach (var pair in dictionaryStatistics) {
             builder.Append($"{pair.Key}: ");
             builder.AppendLine(string.Join(" | ", pair.Value.Select(p => $"{p.Key}: {p.Value}")));
         }
         builder.AppendLine();
+        */
 
-        builder.AppendLine(nameof(vector2Statistics));
+        //builder.AppendLine(nameof(vector2Statistics));
         foreach (var pair in vector2Statistics) {
             builder.AppendLine($"{pair.Key}: {pair.Value.DefaultIfEmpty(Vector2.zero).Last()}");
         }
