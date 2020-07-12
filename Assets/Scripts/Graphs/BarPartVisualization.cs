@@ -14,7 +14,7 @@ public class BarPartVisualization : MonoBehaviour
 
     public void Start() {
         GameObject header = Instantiate(textPrefab, this.transform.position, Quaternion.identity);
-        header.GetComponentInChildren<GraphHeader>().ApplyHeader(floatStatistic.Translate());
+        header.GetComponentInChildren<GraphHeader>().label = floatStatistic.Translate();
         textPrefab = header;
     }
 

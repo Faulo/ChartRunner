@@ -53,8 +53,8 @@ MonoBehaviour:
   minimumValue: -1
   maximumValue: -1
   spriteRenderer: {fileID: 8860725374212016971}
-  header: {fileID: 4071923871688218008, guid: a208f5707b15e4d4b93b5e3895adf052, type: 3}
-  offset: {x: -2.25, y: 2.5, z: 0}
+  header: {fileID: 3717704581641378467, guid: a4bc4dac28156ec47b8572b381067577, type: 3}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &5154279193739127025
 GameObject:
   m_ObjectHideFlags: 0

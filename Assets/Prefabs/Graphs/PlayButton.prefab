@@ -254,17 +254,17 @@ PrefabInstance:
         type: 3}
       propertyPath: header
       value: 
-      objectReference: {fileID: 4071923871688218008, guid: 52775e70c9e4f1445adb1b4ba8ba060e,
+      objectReference: {fileID: 3717704581641378467, guid: bf2581e781a63664c9a07b31e6b5e9c3,
         type: 3}
     - target: {fileID: 4494947726684015808, guid: f6f6275be0a44e842a498f062ed134a6,
         type: 3}
       propertyPath: offset.x
-      value: 2.25
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 4494947726684015808, guid: f6f6275be0a44e842a498f062ed134a6,
         type: 3}
       propertyPath: offset.y
-      value: -0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4494947726684015808, guid: f6f6275be0a44e842a498f062ed134a6,
         type: 3}
