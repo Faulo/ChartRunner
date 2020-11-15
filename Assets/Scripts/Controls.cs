@@ -6,11 +6,9 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public class @Controls : IInputActionCollection, IDisposable
-{
+public class @Controls : IInputActionCollection, IDisposable {
     public InputActionAsset asset { get; }
-    public @Controls()
-    {
+    public @Controls() {
         asset = InputActionAsset.FromJson(@"{
     ""name"": ""Controls"",
     ""maps"": [
@@ -227,17 +225,6 @@ public class @Controls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""740830d9-d7bd-4c64-8d8a-15f69fcb2e0d"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""d45d9d31-74eb-42e7-ae00-a9a3626cecdb"",
                     ""path"": ""<Joystick>/trigger"",
                     ""interactions"": """",
@@ -293,6 +280,28 @@ public class @Controls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""9cc6f351-284b-4a58-bf61-e7042823788a"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rewind"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ab7a42c9-7dc1-4b8d-9dcd-044b17a1b0fe"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rewind"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""70644f71-4b72-4920-ad4c-8ccf071c598b"",
                     ""path"": ""<Keyboard>/ctrl"",
                     ""interactions"": """",
@@ -315,17 +324,6 @@ public class @Controls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""ab7a42c9-7dc1-4b8d-9dcd-044b17a1b0fe"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Run"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""d7a67864-ef80-4db2-ac6b-f1e86f2d21e5"",
                     ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
@@ -339,6 +337,28 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""4e23c82e-9983-4374-b65f-416c31e271cf"",
                     ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Roll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f39ea573-baa7-4852-afb6-0c832c35a34b"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Roll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""740830d9-d7bd-4c64-8d8a-15f69fcb2e0d"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -643,61 +663,52 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Debug_F12 = m_Debug.FindAction("F12", throwIfNotFound: true);
     }
 
-    public void Dispose()
-    {
+    public void Dispose() {
         UnityEngine.Object.Destroy(asset);
     }
 
-    public InputBinding? bindingMask
-    {
+    public InputBinding? bindingMask {
         get => asset.bindingMask;
         set => asset.bindingMask = value;
     }
 
-    public ReadOnlyArray<InputDevice>? devices
-    {
+    public ReadOnlyArray<InputDevice>? devices {
         get => asset.devices;
         set => asset.devices = value;
     }
 
     public ReadOnlyArray<InputControlScheme> controlSchemes => asset.controlSchemes;
 
-    public bool Contains(InputAction action)
-    {
+    public bool Contains(InputAction action) {
         return asset.Contains(action);
     }
 
-    public IEnumerator<InputAction> GetEnumerator()
-    {
+    public IEnumerator<InputAction> GetEnumerator() {
         return asset.GetEnumerator();
     }
 
-    IEnumerator IEnumerable.GetEnumerator()
-    {
+    IEnumerator IEnumerable.GetEnumerator() {
         return GetEnumerator();
     }
 
-    public void Enable()
-    {
+    public void Enable() {
         asset.Enable();
     }
 
-    public void Disable()
-    {
+    public void Disable() {
         asset.Disable();
     }
 
     // Player
-    private readonly InputActionMap m_Player;
-    private IPlayerActions m_PlayerActionsCallbackInterface;
-    private readonly InputAction m_Player_Move;
-    private readonly InputAction m_Player_Jump;
-    private readonly InputAction m_Player_Rewind;
-    private readonly InputAction m_Player_Run;
-    private readonly InputAction m_Player_Roll;
-    public struct PlayerActions
-    {
-        private @Controls m_Wrapper;
+    readonly InputActionMap m_Player;
+    IPlayerActions m_PlayerActionsCallbackInterface;
+    readonly InputAction m_Player_Move;
+    readonly InputAction m_Player_Jump;
+    readonly InputAction m_Player_Rewind;
+    readonly InputAction m_Player_Run;
+    readonly InputAction m_Player_Roll;
+    public struct PlayerActions {
+        @Controls m_Wrapper;
         public PlayerActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
@@ -709,10 +720,8 @@ public class @Controls : IInputActionCollection, IDisposable
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
         public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
-        public void SetCallbacks(IPlayerActions instance)
-        {
-            if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
-            {
+        public void SetCallbacks(IPlayerActions instance) {
+            if (m_Wrapper.m_PlayerActionsCallbackInterface != null) {
                 @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
@@ -730,8 +739,7 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Roll.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRoll;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
-            if (instance != null)
-            {
+            if (instance != null) {
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
@@ -753,23 +761,22 @@ public class @Controls : IInputActionCollection, IDisposable
     public PlayerActions @Player => new PlayerActions(this);
 
     // Debug
-    private readonly InputActionMap m_Debug;
-    private IDebugActions m_DebugActionsCallbackInterface;
-    private readonly InputAction m_Debug_F1;
-    private readonly InputAction m_Debug_F2;
-    private readonly InputAction m_Debug_F3;
-    private readonly InputAction m_Debug_F4;
-    private readonly InputAction m_Debug_F5;
-    private readonly InputAction m_Debug_F6;
-    private readonly InputAction m_Debug_F7;
-    private readonly InputAction m_Debug_F8;
-    private readonly InputAction m_Debug_F9;
-    private readonly InputAction m_Debug_F10;
-    private readonly InputAction m_Debug_F11;
-    private readonly InputAction m_Debug_F12;
-    public struct DebugActions
-    {
-        private @Controls m_Wrapper;
+    readonly InputActionMap m_Debug;
+    IDebugActions m_DebugActionsCallbackInterface;
+    readonly InputAction m_Debug_F1;
+    readonly InputAction m_Debug_F2;
+    readonly InputAction m_Debug_F3;
+    readonly InputAction m_Debug_F4;
+    readonly InputAction m_Debug_F5;
+    readonly InputAction m_Debug_F6;
+    readonly InputAction m_Debug_F7;
+    readonly InputAction m_Debug_F8;
+    readonly InputAction m_Debug_F9;
+    readonly InputAction m_Debug_F10;
+    readonly InputAction m_Debug_F11;
+    readonly InputAction m_Debug_F12;
+    public struct DebugActions {
+        @Controls m_Wrapper;
         public DebugActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @F1 => m_Wrapper.m_Debug_F1;
         public InputAction @F2 => m_Wrapper.m_Debug_F2;
@@ -788,10 +795,8 @@ public class @Controls : IInputActionCollection, IDisposable
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
         public static implicit operator InputActionMap(DebugActions set) { return set.Get(); }
-        public void SetCallbacks(IDebugActions instance)
-        {
-            if (m_Wrapper.m_DebugActionsCallbackInterface != null)
-            {
+        public void SetCallbacks(IDebugActions instance) {
+            if (m_Wrapper.m_DebugActionsCallbackInterface != null) {
                 @F1.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnF1;
                 @F1.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnF1;
                 @F1.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnF1;
@@ -830,8 +835,7 @@ public class @Controls : IInputActionCollection, IDisposable
                 @F12.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnF12;
             }
             m_Wrapper.m_DebugActionsCallbackInterface = instance;
-            if (instance != null)
-            {
+            if (instance != null) {
                 @F1.started += instance.OnF1;
                 @F1.performed += instance.OnF1;
                 @F1.canceled += instance.OnF1;
@@ -872,16 +876,14 @@ public class @Controls : IInputActionCollection, IDisposable
         }
     }
     public DebugActions @Debug => new DebugActions(this);
-    public interface IPlayerActions
-    {
+    public interface IPlayerActions {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnRewind(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
         void OnRoll(InputAction.CallbackContext context);
     }
-    public interface IDebugActions
-    {
+    public interface IDebugActions {
         void OnF1(InputAction.CallbackContext context);
         void OnF2(InputAction.CallbackContext context);
         void OnF3(InputAction.CallbackContext context);

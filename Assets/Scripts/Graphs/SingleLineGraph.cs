@@ -8,7 +8,7 @@ public class SingleLineGraph : MonoBehaviour {
     public GameObject linePrefab = default;
 
     public void AddLine() {
-        GameObject newLine = Instantiate(linePrefab, startPos.position, Quaternion.identity);
+        var newLine = Instantiate(linePrefab, startPos.position, Quaternion.identity);
         newLine.transform.SetParent(transform);
         newLine.name = "Line" + lines.Count;
         lines.Add(newLine);

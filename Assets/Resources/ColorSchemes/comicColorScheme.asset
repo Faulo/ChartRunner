@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d83f46e04fed124a9a22619c1691190, type: 3}
   m_Name: comicColorScheme
   m_EditorClassIdentifier: Assembly-CSharp::ColorSchemes
-  mainColor: {r: 0.2901961, g: 0.30588236, b: 0.54901963, a: 1}
+  mainColor: {r: 0.28627452, g: 0.3019608, b: 0.5529412, a: 1}
   backgroundColor: {r: 0.8407796, g: 0.8867924, b: 0.86673707, a: 1}
-  foregroundColor: {r: 0.4647796, g: 0.41491634, b: 0.7924528, a: 1}
+  effectColor: {r: 0, g: 0, b: 0, a: 0}
   highlightColor: {r: 0.9490196, g: 0.8352941, b: 0.25490198, a: 1}
   negativeHighlightColor: {r: 0.6509804, g: 0.011764706, b: 0.011764706, a: 1}
-  positiveHighlightColor: {r: 0.29411766, g: 0.7490196, b: 0.7058824, a: 1}
+  positiveHighlightColor: {r: 0.16429335, g: 0.49056602, b: 0.45962635, a: 1}

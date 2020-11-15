@@ -12,10 +12,6 @@ public class SingleBarGraph : MonoBehaviour {
     float barDistance = 1;
     [SerializeField, Range(0, 100), Tooltip("Length of the ordinate, if drawn")]
     float ordinateHeight = 1;
-    [SerializeField, Tooltip("Show the X axis")]
-    bool drawAbscissaLabels = true;
-    [SerializeField, Tooltip("Show the Y axis")]
-    bool drawOrdinateLabels = true;
 
     [Header("References")]
     [SerializeField, Expandable]

@@ -1,14 +1,13 @@
-﻿using UnityEngine;
-using System.Collections;
-using UnityEditor;
+﻿using UnityEditor;
+using UnityEngine;
 
 [CustomEditor(typeof(ScatterPlot))]
-public class ScatterPlotEditor  : Editor {
+public class ScatterPlotEditor : Editor {
     public override void OnInspectorGUI() {
 
         DrawDefaultInspector();
 
-        ScatterPlot myTarget = (ScatterPlot)target;
+        var myTarget = (ScatterPlot)target;
 
         if (GUILayout.Button("Add Dots")) {
             myTarget.AddDots();

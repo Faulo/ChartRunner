@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class DotsVisualization : MonoBehaviour
-{
+public class DotsVisualization : MonoBehaviour {
     [Header("Parameters")]
     public Vector2[] curParameters = default;
     public Vector2Statistic vector2Statistic = default;
@@ -31,9 +29,9 @@ public class DotsVisualization : MonoBehaviour
             if (position.x >= curStep) {
 
                 //print(newPos);
-                GameObject newDot = Instantiate(dotPrefab, this.transform.position, Quaternion.identity);
-                newDot.transform.SetParent(this.transform);
-                Vector3 newPos = new Vector3(newDot.transform.position.x + position.x, newDot.transform.position.y + position.y, 0);
+                var newDot = Instantiate(dotPrefab, transform.position, Quaternion.identity);
+                newDot.transform.SetParent(transform);
+                var newPos = new Vector3(newDot.transform.position.x + position.x, newDot.transform.position.y + position.y, 0);
                 newDot.transform.position = newPos;
                 curDots.Add(newDot);
 
@@ -44,17 +42,17 @@ public class DotsVisualization : MonoBehaviour
         }
     }
 
-    private void DeleteDotsOnRewind() {
+    void DeleteDotsOnRewind() {
         if (curLastValue < lastValue) {
-            List<GameObject> deleteDots = new List<GameObject>();
-            foreach (GameObject dot in curDots) {
+            var deleteDots = new List<GameObject>();
+            foreach (var dot in curDots) {
                 if (dot.transform.position.x > curLastValue) {
                     deleteDots.Add(dot);
                     curStep -= stepSize;
                 }
             }
 
-            foreach (GameObject dot in deleteDots) {
+            foreach (var dot in deleteDots) {
                 curDots.Remove(dot);
                 GameObject.Destroy(dot);
             }

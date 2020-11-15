@@ -11,7 +11,7 @@ public class AvatarSnapshot {
 
     public override bool Equals(object obj) {
         return obj is AvatarSnapshot other
-            ? position == other.position && velocity == other.velocity && acceleration == other.acceleration && state == other.state && facing == other.facing && drag == other.drag && rollTimer == rollTimer
+            ? position == other.position && velocity == other.velocity && acceleration == other.acceleration && state == other.state && facing == other.facing && drag == other.drag && rollTimer == other.rollTimer
             : false;
     }
 

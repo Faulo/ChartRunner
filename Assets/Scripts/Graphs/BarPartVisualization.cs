@@ -1,10 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using TMPro;
+﻿using UnityEngine;
 
-public class BarPartVisualization : MonoBehaviour
-{
+public class BarPartVisualization : MonoBehaviour {
     public FloatStatistic floatStatistic = default;
     public Transform topPivot = default;
 
@@ -13,12 +9,12 @@ public class BarPartVisualization : MonoBehaviour
     public GameObject textPrefab = default;
 
     public void Start() {
-        GameObject header = Instantiate(textPrefab, this.transform.position, Quaternion.identity);
+        var header = Instantiate(textPrefab, transform.position, Quaternion.identity);
         header.GetComponentInChildren<GraphHeader>().label = floatStatistic.Translate();
         textPrefab = header;
     }
 
-    private void Update() {
+    void Update() {
         //WERDEN NOCH NICHT AN DEM RICHTIGEN OBJEKT AUSGEREICHTET
         textPrefab.transform.position = midPivot.position + offset;
     }
