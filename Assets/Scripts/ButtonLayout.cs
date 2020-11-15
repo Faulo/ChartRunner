@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Slothsoft.UnityExtensions;
 using UnityEngine;
-using Slothsoft.UnityExtensions;
 
-public class ButtonLayout : MonoBehaviour
-{
+public class ButtonLayout : MonoBehaviour {
     [SerializeField, Expandable]
     SpriteRenderer buttonLeft = default;
     [SerializeField, Expandable]
@@ -20,12 +17,12 @@ public class ButtonLayout : MonoBehaviour
     bool moveRight = false;
 
     void Update() {
-        if(AvatarController.instance.intendedMovement > 0) {
+        if (AvatarController.instance.intendedMovement > 0) {
             moveRight = true;
         } else {
             moveRight = false;
         }
-        if(AvatarController.instance.intendedMovement < 0) {
+        if (AvatarController.instance.intendedMovement < 0) {
             moveLeft = true;
         } else {
             moveLeft = false;

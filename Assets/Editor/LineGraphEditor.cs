@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
-using UnityEditor;
+﻿using UnityEditor;
+using UnityEngine;
 
 [CustomEditor(typeof(SingleLineGraph))]
 public class LineGraphEditor : Editor {
@@ -8,7 +7,7 @@ public class LineGraphEditor : Editor {
 
         DrawDefaultInspector();
 
-        SingleLineGraph myTarget = (SingleLineGraph)target;
+        var myTarget = (SingleLineGraph)target;
 
         if (GUILayout.Button("Add Line")) {
             myTarget.AddLine();

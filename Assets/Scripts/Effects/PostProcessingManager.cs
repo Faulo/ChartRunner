@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-public class PostProcessingManager : MonoBehaviour
-{
+public class PostProcessingManager : MonoBehaviour {
     public float targetChromaticAberration = 0;
     public float targetLensDisortion = 0;
     public float targetMotionBlur = 0;
@@ -29,7 +26,7 @@ public class PostProcessingManager : MonoBehaviour
         volume.profile.TryGet(out bloom);
     }
 
-    private void Update() {
+    void Update() {
         lensDistortion.intensity.value = Mathf.Lerp(lensDistortion.intensity.value, targetLensDisortion, Time.deltaTime);
         chromaticAberration.intensity.value = Mathf.Lerp(chromaticAberration.intensity.value, targetChromaticAberration, Time.deltaTime);
         motionBlur.intensity.value = Mathf.Lerp(motionBlur.intensity.value, targetMotionBlur, Time.deltaTime);

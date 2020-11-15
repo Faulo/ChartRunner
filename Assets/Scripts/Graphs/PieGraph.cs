@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class PieGraph : MonoBehaviour
-{
+public class PieGraph : MonoBehaviour {
     [Header("Parameters")]
-    [Tooltip("Ture - Floats / False - Dicts")]
+    [Tooltip("True - Floats / False - Dicts")]
     public bool floatStatistics = true;
     [Range(0.1f, 1f)]
     public float scaleFactor = 1;
@@ -18,21 +15,16 @@ public class PieGraph : MonoBehaviour
     [Header("References")]
     public GameObject pie = default;
 
-    void Update()
-    {
-        if (true) {
+    void Update() {
+        if (floatStatistics) {
             value = Statistics.instance.Get(floatStatistic);
         } else {
             foreach (var (name, value) in Statistics.instance.Get(dictionaryStatistic)) {
-
-            }
-            var curDict = Statistics.instance.Get(dictionaryStatistic);
-            foreach(var keyValuePair in curDict) {
-                value = keyValuePair.Item2;
+                this.value = value;
+                break;
             }
         }
-
-        Vector3 newScale = new Vector3(value, value, value) * scaleFactor;
+        var newScale = new Vector3(value, value, value) * scaleFactor;
         pie.transform.localScale = newScale;
     }
 }

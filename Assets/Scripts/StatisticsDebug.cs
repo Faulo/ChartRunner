@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Slothsoft.UnityExtensions;
+﻿using Slothsoft.UnityExtensions;
 using TMPro;
 using UnityEngine;
 
