@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
-using UnityEditor;
+﻿using UnityEditor;
+using UnityEngine;
 
 [CustomEditor(typeof(PieChart))]
 public class PieChartEditor : Editor {
@@ -8,7 +7,7 @@ public class PieChartEditor : Editor {
 
         DrawDefaultInspector();
 
-        PieChart myTarget = (PieChart)target;
+        var myTarget = (PieChart)target;
 
         if (GUILayout.Button("Add Piece")) {
             myTarget.AddPiece();

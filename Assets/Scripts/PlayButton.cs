@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Slothsoft.UnityExtensions;
 using UnityEngine;
-using Slothsoft.UnityExtensions;
 
-public class PlayButton : MonoBehaviour
-{
+public class PlayButton : MonoBehaviour {
     [SerializeField]
     float threshold = 5;
     [SerializeField, Expandable]
@@ -15,9 +12,9 @@ public class PlayButton : MonoBehaviour
             singleBar = GetComponentInChildren<SingleBar>();
         }
     }
-    private void Start() {
+    void Start() {
         if (singleBar) {
-            if(Statistics.instance.Get(singleBar.statistic) >= threshold) {
+            if (Statistics.instance.Get(singleBar.statistic) >= threshold) {
                 StartGame();
             }
         }

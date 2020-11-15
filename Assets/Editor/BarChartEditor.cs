@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
-using UnityEditor;
+﻿using UnityEditor;
+using UnityEngine;
 
 [CustomEditor(typeof(BarChart))]
 public class BarChartEditor : Editor {
@@ -8,7 +7,7 @@ public class BarChartEditor : Editor {
 
         DrawDefaultInspector();
 
-        BarChart myTarget = (BarChart)target;
+        var myTarget = (BarChart)target;
 
         if (GUILayout.Button("Add Bar Part")) {
             myTarget.AddBarPart();

@@ -1,17 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Cinemachine;
 using UnityEngine;
-using Cinemachine;
-public class ShakeImpulseManager : MonoBehaviour
-{
+public class ShakeImpulseManager : MonoBehaviour {
     public CinemachineImpulseSource softImpulse = default;
     public CinemachineImpulseSource mildImpulse = default;
     public CinemachineImpulseSource strongImpulse = default;
 
     public static ShakeImpulseManager instance = default;
 
-    void Awake()
-    {
+    void Awake() {
         instance = this;
     }
 

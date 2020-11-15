@@ -1086,17 +1086,32 @@ PrefabInstance:
     - target: {fileID: 1437475966899878512, guid: 29ba904085119784787f7eb85f5dbd24,
         type: 3}
       propertyPath: m_margin.z
-      value: -0.0026626114
+      value: -1.4794483
       objectReference: {fileID: 0}
     - target: {fileID: 1437475966899878512, guid: 29ba904085119784787f7eb85f5dbd24,
         type: 3}
       propertyPath: m_textAlignment
-      value: 514
+      value: 65535
       objectReference: {fileID: 0}
     - target: {fileID: 1437475966899878512, guid: 29ba904085119784787f7eb85f5dbd24,
         type: 3}
       propertyPath: m_margin.y
       value: -0.7515567
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437475966899878512, guid: 29ba904085119784787f7eb85f5dbd24,
+        type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437475966899878512, guid: 29ba904085119784787f7eb85f5dbd24,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437475966899878512, guid: 29ba904085119784787f7eb85f5dbd24,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 1437475967056912520, guid: 29ba904085119784787f7eb85f5dbd24,
         type: 3}

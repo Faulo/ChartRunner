@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "Impulse", menuName = "ScriptableObjects/Impulse", order = 1)]
 public class Impulse : ScriptableObject {
