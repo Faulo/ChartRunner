@@ -9,9 +9,10 @@
                     "name": "Move",
                     "type": "Value",
                     "id": "4eb2b98b-36b2-4bc9-8160-90342f0a2cad",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Axis",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Jump",
@@ -19,7 +20,8 @@
                     "id": "96cde5c4-262d-41fb-8723-c49ee53d828f",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Rewind",
@@ -27,7 +29,8 @@
                     "id": "a4dd028e-d220-4322-bd7b-8dde8fa0b615",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Run",
@@ -35,7 +38,8 @@
                     "id": "49112e21-13b4-44f8-b4e3-4059eb80bf72",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Roll",
@@ -43,14 +47,15 @@
                     "id": "3cb108b3-e45b-43db-aae1-ae3309e11be5",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "91d1a14d-331f-42cc-af33-8e4665f7384d",
-                    "path": "<Gamepad>/leftStick",
+                    "path": "<Gamepad>/leftStick/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -61,7 +66,7 @@
                 {
                     "name": "",
                     "id": "66ed623c-b308-4ae6-9bb3-2e9ab6cff15a",
-                    "path": "<Gamepad>/dpad",
+                    "path": "<Gamepad>/dpad/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -72,7 +77,7 @@
                 {
                     "name": "",
                     "id": "324561f2-9614-444c-9546-150b6b12d37f",
-                    "path": "<Joystick>/stick",
+                    "path": "<Joystick>/stick/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -81,20 +86,9 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "57e8b092-5cb7-40c7-b55d-347787771de8",
-                    "path": "<Joystick>/hat",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "2D Vector",
+                    "name": "1D Axis",
                     "id": "dc3b5cf8-f6ff-4fd7-bb61-49800c0a7b9f",
-                    "path": "2DVector",
+                    "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -103,30 +97,8 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Up",
+                    "name": "Negative",
                     "id": "05e8b294-ba08-4bb5-b8c3-79c3d22f147c",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Down",
-                    "id": "edf572d9-8b03-4c5e-b81f-0e8bddd976b3",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Left",
-                    "id": "200ec10e-7de7-4503-a2bd-8108e0d49d49",
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
@@ -136,8 +108,8 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Right",
-                    "id": "be6d3503-92f2-4b5e-af8c-2dc1750d02a3",
+                    "name": "Positive",
+                    "id": "edf572d9-8b03-4c5e-b81f-0e8bddd976b3",
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
@@ -147,9 +119,9 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "2D Vector",
+                    "name": "1D Axis",
                     "id": "a6e6517f-2085-415d-9eb8-76523db6f0c0",
-                    "path": "2DVector",
+                    "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -158,29 +130,7 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
-                    "id": "e8fe5b8b-cfc2-4a96-8742-917efdf0081a",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "7dd2abf8-4472-47f2-b665-52fedc49c35b",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
+                    "name": "Negative",
                     "id": "02125ea3-ed79-40b5-bcf3-86808c052fa7",
                     "path": "<Keyboard>/a",
                     "interactions": "",
@@ -191,7 +141,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "right",
+                    "name": "Positive",
                     "id": "630e3b57-6542-4d00-9327-9b42a765214e",
                     "path": "<Keyboard>/d",
                     "interactions": "",
@@ -400,7 +350,8 @@
                     "id": "4bdb4ccc-16ba-42a3-8e81-975d87692c68",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "F2",
@@ -408,7 +359,8 @@
                     "id": "39b05b19-bb4f-47f8-ada8-609ad7607e9c",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "F3",
@@ -416,7 +368,8 @@
                     "id": "cbe72fe3-5640-4e43-895d-894ef3511c1c",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "F4",
@@ -424,7 +377,8 @@
                     "id": "54a1100e-ddcf-4ba6-988b-f4e7cc205d06",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "F5",
@@ -432,7 +386,8 @@
                     "id": "9302eb4f-81f0-4d38-a99f-efb42fbf9ec5",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "F6",
@@ -440,7 +395,8 @@
                     "id": "f201ab28-0ff8-4672-b429-4128039c2b6f",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "F7",
@@ -448,7 +404,8 @@
                     "id": "ab67c856-2e6a-4e90-b2ea-251389a49983",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "F8",
@@ -456,7 +413,8 @@
                     "id": "1d49faaa-da2c-4c24-b0de-ca1ce3b1c707",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "F9",
@@ -464,7 +422,8 @@
                     "id": "67d14326-7d51-4108-a59c-f1b4530cc83f",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "F10",
@@ -472,7 +431,8 @@
                     "id": "a7cc8df0-bc8a-4ebc-b505-aba2fc710ee5",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "F11",
@@ -480,7 +440,8 @@
                     "id": "4a1ce445-ea35-4300-b548-a0ac9f5d69af",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "F12",
@@ -488,7 +449,8 @@
                     "id": "e22f4924-d223-4ad9-b8d9-bc269240850e",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [

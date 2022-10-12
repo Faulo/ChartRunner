@@ -9,8 +9,7 @@ public class AvatarInput : MonoBehaviour, Controls.IPlayerActions {
     Controls controls;
 
     public void OnMove(InputAction.CallbackContext context) {
-        var input = context.ReadValue<Vector2>();
-        avatar.intendedMovement = input.x;
+        avatar.intendedMovement = context.ReadValue<float>();
     }
     public void OnJump(InputAction.CallbackContext context) {
         if (context.started) {
