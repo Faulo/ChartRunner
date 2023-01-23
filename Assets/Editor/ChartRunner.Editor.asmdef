@@ -1,0 +1,18 @@
+{
+    "name": "ChartRunner.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:b1e302eaac76ab74d81ab165d1136636"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
